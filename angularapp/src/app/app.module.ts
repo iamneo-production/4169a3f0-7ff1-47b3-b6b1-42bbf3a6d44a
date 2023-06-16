@@ -20,6 +20,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { UpdategiftComponent } from './components/adminside/updategift/updategift.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditComponent } from './components/adminside/edit/edit.component';
+import { AddDeleteComponent } from './components/adminside/add-delete/add-delete.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignupComponent,
     UpdategiftComponent,
+    EditComponent,
+    AddDeleteComponent,
    
   ],
   imports: [
