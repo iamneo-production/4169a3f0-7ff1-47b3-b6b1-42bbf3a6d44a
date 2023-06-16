@@ -22,6 +22,7 @@ import { UpdategiftComponent } from './components/adminside/updategift/updategif
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/adminside/edit/edit.component';
 import { AddDeleteComponent } from './components/adminside/add-delete/add-delete.component';
+import { StarRatingComponent } from './components/adminside/star-rating/star-rating.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { AddDeleteComponent } from './components/adminside/add-delete/add-delete
     UpdategiftComponent,
     EditComponent,
     AddDeleteComponent,
+    StarRatingComponent,
    
   ],
   imports: [
