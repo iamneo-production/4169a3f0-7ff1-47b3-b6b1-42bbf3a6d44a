@@ -1,0 +1,13 @@
+.box{
+    width:50%;
+    border:1px solid black;
+    border-radius:25px;
+    padding:0px 20px 20px 20px;
+    margin-left:300px;
+}
+.head{
+    background-color:#D4AF37;
+}
+.box{
+    background-color: #D4AF37;
+}
