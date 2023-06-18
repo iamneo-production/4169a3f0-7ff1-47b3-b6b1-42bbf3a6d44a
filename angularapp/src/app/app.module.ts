@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/adminside/edit/edit.component';
 import { AddDeleteComponent } from './components/adminside/add-delete/add-delete.component';
 import { StarRatingComponent } from './components/adminside/star-rating/star-rating.component';
+import{ ProductsService} from './products.service';
 
 
 @NgModule({
@@ -57,7 +58,7 @@ import { StarRatingComponent } from './components/adminside/star-rating/star-rat
 
     //NgbModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
