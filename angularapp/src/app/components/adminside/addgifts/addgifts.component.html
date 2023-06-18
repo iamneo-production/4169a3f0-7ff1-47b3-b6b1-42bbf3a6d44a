@@ -1,1 +1,201 @@
-<p>addgifts works!</p>
+<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!----<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">-->
+  <title>Layout Example</title>
+  <style>
+    
+ .table-section {
+      background-color: #fff;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .table-section table {
+      flex-grow: 1;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table-section table thead {
+      /*background-color: #008080;*/
+      background-color: #D4AF37;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .table-section table th{
+     /* background-color: #008080;*/
+     background-color: #D4AF37;
+    color: #fff;
+    padding: 10px;
+    }
+   .table-section table td {
+  
+    background-color: #D4AF37;
+    color: #eee;
+  }
+
+  
+
+    .form-section {
+      /*background-color: #F0F8FF;*/
+      background-color: #D4AF37;
+      padding: 20px;
+    }
+    img{
+        max-width: 30%;
+      height: 30%;
+    }
+    .navbar{
+     /* background-color: #008080;*/
+     background-color: #D4AF37;
+    }
+    .my-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .button-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+  }
+  
+    
+  </style>
+</head>
+<body>
+  <header>
+    <!--<nav class="navbar navbar-dark">
+      <div class="container">
+       <!---- <a class="navbar-brand">Photoshop</a>
+        <a  id="adminGifts" class="navbar-brand">Gifts</a>
+        <a  id="adminTheme" class="navbar-brand">Themes</a>
+        <a class="navbar-brand">Customers Feedback</a>
+        <a  id="adminOrders" class="navbar-brand">Orders</a>
+        
+        <a id="logout" class="navbar-brand">Logout</a>-->
+        <!--<a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-gift" href="#" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" routerLink="theme" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" href="#">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" routerLink="order" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="#">Logout</a>
+        
+    
+        
+      </div>
+    </nav>-->
+    <div class="head">
+      <nav class="navbar navbar-dark">
+        <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-home" href="../admin">Home</a>
+        <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="../admin">Logout</a>
+  </nav>
+    </div>
+  </header><br>
+
+  <main class="container">
+    
+    <div class="row">
+        <div class="col-md-8">
+          <section class="table-section">
+        
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listdata;let i =index"  >
+                    <td><span><img src={{item.giftImageUrl}}></span></td>
+                                  <td>{{item.giftName}}</td>
+                                  <td><span>{{item.giftPrice}}</span></td>
+                                  <td><span>{{item.giftQuantity}}</span></td>
+                                <td> <button (click)="updateRow(item.giftId)" ><i class="fa fa-edit" id=editGift{{i+1}}></i></button></td>    
+                            <td> <button  (click)="deleteRow(item.giftId)"><i class="fa fa-trash-o" id=deleteGift{{i+1}}></i></button></td>
+                           
+                    </tr>
+                    
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+     <div class="col-md-4">
+        <section class="form-section" >
+          <h2 style="align-items: center;">Add Gifts</h2>
+          <form >
+            <div class="mb-3">
+              <label for="name" class="form-label">Gift Name:</label>
+              <input type="text" id="addGiftName" placeholder="enter the gift name" [(ngModel)]="gifts.giftName" name="name" class ="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Gift Price:</label>
+              <input type="text" id="addGiftPrice" placeholder="enter the gift price" [(ngModel)]="gifts.giftPrice" name="price"class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Gift Image URL:</label>
+                <input type="text" id="addGiftimageUrl" placeholder="enter the gift url" [(ngModel)]="gifts.giftImageUrl" name="image"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Quantity:</label>
+                
+<input type="text" id="addGiftQuantity" placeholder="enter the gift quantity" [(ngModel)]="gifts.giftQuantity" name="quantity"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Gift Details:</label>
+                
+ <input type="text" id="addGiftDetails" placeholder="enter the gift details" [(ngModel)]="gifts.giftDetails" name="detail"class="form-control">
+              </div>
+
+             
+
+            
+              <div class="button-container">
+                <button type="button" class="my-button"  (click)="submit()" id="addGiftButton">Add     </button>
+                <input type="reset"  class="my-button">
+              </div>
+              
+          </form>
+        </section>
+      </div>
+    
+  </div>
+</main>
+
+  
+</body>
+
+</html>
+

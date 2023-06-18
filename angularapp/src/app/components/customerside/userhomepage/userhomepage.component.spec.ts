@@ -1,25 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { RouterTestingModule } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { UserHomePageComponent } from './userhomepage.component';
 
-import { UserhomepageComponent } from './userhomepage.component';
-
-describe('UserhomepageComponent', () => {
-  let component: UserhomepageComponent;
-  let fixture: ComponentFixture<UserhomepageComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UserhomepageComponent ]
-    })
-    .compileComponents();
-  });
-
+describe('UserHomePageComponent', () => {
+  let component: UserHomePageComponent;
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule], 
+    providers: [UserHomePageComponent]
+  }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserhomepageComponent);
+    const fixture = TestBed.createComponent(UserHomePageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
-
-  it('should create', () => {
+  it('FE_userHomePageTest', () => {
     expect(component).toBeTruthy();
   });
 });
