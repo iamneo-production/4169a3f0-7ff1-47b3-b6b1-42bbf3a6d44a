@@ -1,0 +1,12 @@
+
+<app-customerside></app-customerside>
+<section class="products">
+    <div class="product" *ngFor="let product of products; let i=index">
+    <button id=grid{{i+1}}  (click)="addToCart()">
+      <img [src]="product.image" [alt]="product.name">
+      <h2>{{ product.name }}</h2>
+      <p>Rs.{{ product.price }}</p>
+      <br>
+    </button>
+    </div>
+  </section>
