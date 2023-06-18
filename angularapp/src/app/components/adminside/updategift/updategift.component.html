@@ -1,0 +1,99 @@
+<router-outlet></router-outlet>
+<header>
+  <div class="head">
+    <nav class="navbar navbar-dark">
+      <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
+      <a class="navbar-brand fa fa-home" href="../admin">Home</a>
+      <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
+      <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
+      <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
+      <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
+      <a class="navbar-brand" href="../admin">Logout</a>
+</nav>
+    </div>
+  </header><br>
+    <!--<div class="container">
+      <div class="form-container">
+        <h2 style="align-items: center;">Update Gifts</h2>
+        <form [formGroup]="userform">
+          <div class="mb-3">
+            <label for="name" class="form-label">Gift Name:</label>
+            <input type="text" id="editGiftName" placeholder="enter the gift name" formControlName="name" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Gift Price:</label>
+            <input type="text" id="editGiftPrice" placeholder="enter the gift price" formControlName="price" class="form-control">
+          </div>
+  
+          <div class="mb-3">
+              <label for="email" class="form-label">Gift Image URL:</label>
+              <input type="text" id="editGiftimageUrl" placeholder="enter the gift url" formControlName="image" class="form-control">
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Quantity:</label>
+              
+  <input type="text" id="editGiftQuantity" placeholder="enter the gift quantity" formControlName="quantity" class="form-control">
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Gift Details:</label>
+              
+  <input type="text" id="editGiftDetails" placeholder="enter the gift details" formControlName="details" class="form-control">
+            </div>
+  
+           
+  
+            <div class="button-container">
+              <button type="button" class="my-button"  (click)="update()" id="editGiftButton">Update</button>
+              <input type="reset"  class="my-button">
+            </div>
+            
+        </form>
+      </div>
+    </div>-->
+    <div class="container">
+      <section class="form-section" >
+        <h2 style="align-items: center;">Update Gifts</h2>
+        <form >
+          <div class="mb-3">
+            <label for="name" class="form-label">Gift Name:</label>
+            <input type="text" id="editGiftName" placeholder="enter the gift name" [(ngModel)]="gifts.giftName" name="name" class ="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Gift Price:</label>
+            <input type="text" id="editGiftPrice" placeholder="enter the gift price" [(ngModel)]="gifts.giftPrice" name="price"class="form-control">
+          </div>
+  
+          <div class="mb-3">
+              <label for="email" class="form-label">Gift Image URL:</label>
+              <input type="text" id="editGiftimageUrl" placeholder="enter the gift url" [(ngModel)]="gifts.giftImageUrl" name="image"class="form-control">
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Quantity:</label>
+              
+  <input type="text" id="editGiftQuantity" placeholder="enter the gift quantity" [(ngModel)]="gifts.giftQuantity" name="quantity"class="form-control">
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Gift Details:</label>
+              
+  <input type="text" id="editGiftDetails" placeholder="enter the gift details" [(ngModel)]="gifts.giftDetails" name="detail"class="form-control">
+            </div>
+  
+           
+  
+          
+            <div class="button-container">
+              <button type="button" class="my-button" (click)="update()"   id="editGiftButton">Update    </button>
+              <input type="reset"  class="my-button">
+            </div>
+            
+        </form>
+      </section>
+    </div>
+  
+  
+  
+  
