@@ -1,25 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { RouterTestingModule } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { AddGiftsComponent } from './addgifts.component';
 
-import { AddgiftsComponent } from './addgifts.component';
-
-describe('AddgiftsComponent', () => {
-  let component: AddgiftsComponent;
-  let fixture: ComponentFixture<AddgiftsComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AddgiftsComponent ]
-    })
-    .compileComponents();
-  });
-
+describe('AddGiftsComponent', () => {
+  let component: AddGiftsComponent;
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule], 
+    providers: [AddGiftsComponent]
+  }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddgiftsComponent);
+    const fixture = TestBed.createComponent(AddGiftsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
-
-  it('should create', () => {
+  it('FE_addGiftsTest', () => {
     expect(component).toBeTruthy();
   });
 });

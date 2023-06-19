@@ -1,25 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { OrderComponent } from './order.component';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
-  let fixture: ComponentFixture<OrderComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ OrderComponent ]
-    })
-    .compileComponents();
-  });
-
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule], 
+    providers: [OrderComponent]
+  }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderComponent);
+    const fixture = TestBed.createComponent(OrderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
-
-  it('should create', () => {
+  it('FE_orderTest', () => {
     expect(component).toBeTruthy();
   });
 });

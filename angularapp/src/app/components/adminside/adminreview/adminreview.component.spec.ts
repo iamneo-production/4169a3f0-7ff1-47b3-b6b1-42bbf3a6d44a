@@ -1,25 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { RouterTestingModule } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { AdminReviewComponent } from './adminreview.component';
 
-import { AdminreviewComponent } from './adminreview.component';
-
-describe('AdminreviewComponent', () => {
-  let component: AdminreviewComponent;
-  let fixture: ComponentFixture<AdminreviewComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AdminreviewComponent ]
-    })
-    .compileComponents();
-  });
-
+describe('AdminReviewComponent', () => {
+  let component: AdminReviewComponent;
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule], 
+    providers: [AdminReviewComponent]
+  }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminreviewComponent);
+    const fixture = TestBed.createComponent(AdminReviewComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
-
-  it('should create', () => {
+  it('FE_adminReviewTest', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -11,7 +11,7 @@ import { AdminhomepageComponent } from './components/adminside/adminhomepage/adm
 import { OrderComponent } from './components/adminside/order/order.component';
 import { AdminreviewComponent } from './components/adminside/adminreview/adminreview.component';
 import { CustomersideComponent } from './components/customerside/customerside.component';
-//import { CartComponent } from './components/cart/cart.component';
+
 import { CustomerorderComponent } from './components/customerside/customerorder/customerorder.component';
 import { UserhomepageComponent } from './components/customerside/userhomepage/userhomepage.component';
 import { UserreviewComponent } from './components/customerside/userreview/userreview.component';
@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/adminside/edit/edit.component';
 import { AddDeleteComponent } from './components/adminside/add-delete/add-delete.component';
 import { StarRatingComponent } from './components/adminside/star-rating/star-rating.component';
+import{ ProductsService} from './products.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { StarRatingComponent } from './components/adminside/star-rating/star-rat
     OrderComponent,
     AdminreviewComponent,
     CustomersideComponent,
-    //CartComponent,
+
     CustomerorderComponent,
     UserhomepageComponent,
     UserreviewComponent,
@@ -57,7 +58,7 @@ import { StarRatingComponent } from './components/adminside/star-rating/star-rat
 
     //NgbModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
