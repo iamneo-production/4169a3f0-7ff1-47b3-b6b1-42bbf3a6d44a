@@ -12,6 +12,8 @@ import { UserhomepageComponent } from './components/customerside/userhomepage/us
 import { CartComponent } from './components/customerside/cart/cart.component';
 import { CustomerorderComponent } from './components/customerside/customerorder/customerorder.component';
 import { UserreviewComponent } from './components/customerside/userreview/userreview.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+
 
 const routes: Routes = [
   {path:'' , component:LoginComponent},
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path:'edit',component:EditComponent},
   {path:'order',component:OrderComponent},
   {path:'admin-review',component:AdminreviewComponent},
-  {path:'login' , component:LoginComponent},
+  {path:'login' , component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path:'userhomepage' , component:UserhomepageComponent},
   {path: 'cart' , component:CartComponent},
   {path: 'customerorder' , component:CustomerorderComponent},
@@ -31,7 +34,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

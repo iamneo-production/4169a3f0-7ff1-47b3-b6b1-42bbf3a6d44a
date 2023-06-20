@@ -61,6 +61,25 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<version>2.4.5</version>
 		</dependency>
+		<!--added dependencies to overcome errors-->
+		<dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+		<dependency>
+   <groupId>jakarta.persistence</groupId>
+   <artifactId>jakarta.persistence-api</artifactId>
+   <version>3.0.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+    <version>10.1.8</version>
+</dependency>
+
+
 	</dependencies>
 	
 
@@ -72,5 +91,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 
 </project>
