@@ -25,7 +25,6 @@ import { AddDeleteComponent } from './components/adminside/add-delete/add-delete
 import { StarRatingComponent } from './components/adminside/star-rating/star-rating.component';
 import{ ProductsService} from './products.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +52,7 @@ import{ ProductsService} from './products.service';
    HttpClientModule,
    ReactiveFormsModule,
    FormsModule,
+   
    
    AppRoutingModule
 
