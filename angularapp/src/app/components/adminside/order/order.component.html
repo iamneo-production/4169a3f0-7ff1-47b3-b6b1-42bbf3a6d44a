@@ -1,1 +1,44 @@
-<p>order works!</p>
+<router-outlet></router-outlet>
+<div class="head">
+    <nav class="navbar navbar-dark">
+        <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-home" href="../admin">Home</a>
+        <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="../admin">Logout</a>
+  </nav>
+</div>
+<div id="body">
+<br>
+<br>
+<div id="orderbody">
+<div class="sign">
+<span class="fast-flicker">view</span>&nbsp;
+<span class="flicker">order's</span>
+</div>
+<br>
+<br>
+<div>
+<table id="order1">
+<thead>
+    <th id="orderId">Order Id</th>
+    <th id="userId">User id</th>
+    <th id="giftName">Gift Name</th>
+    <th id="giftPrice">Price</th>
+    <th id="giftQuantity">Quantity</th>
+</thead>
+<tbody>
+    <tr *ngFor="let gift of gifts ; let i =index ">
+        <td id = "user{{i+1}}">{{gift.orderId}}</td>
+        <td>User{{i+1}}</td>
+        <td>{{gift.giftName}}</td>
+        <td>{{gift.giftPrice}}</td>
+        <td>{{gift.giftQuantity}}</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
