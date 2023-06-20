@@ -1,0 +1,68 @@
+<!-- VIEW PAGE COMPONENT IS TO DISPLAY FILTERED PRODUCTS BASED ON 
+    1.OCCASSION or
+    2.RECIPIENT or
+    3.GIFT FINDER CONDITIONS -->
+
+
+<div *ngIf="viewType === 'occasion'">
+    <div>
+        <div class="dashboard-heading">
+            <div class="line"></div>
+            <h1 class="heading">Products for {{ selectedOccasion }}</h1>
+            <div class="line"></div> 
+          </div>
+      <section class="products">
+      <div class="product" *ngFor="let product of filteredProducts">
+        <img [src]="product.image" [alt]="product.name">
+        <h2>{{ product.name }}</h2>
+        <p>Rs.{{ product.price }}</p>
+        <div>
+          <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
+          <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
+        </div>
+          <br>
+        <button (click)="addToCart()">Add to Cart</button> </div>
+      </section>
+    </div>
+  </div>
+
+
+  <div *ngIf="viewType === 'giftfinder'">
+    <div class="dashboard-heading">
+        <div class="line"></div>
+        <h1 class="heading">Some gifts of your choice!!</h1>
+        <div class="line"></div> 
+      </div>
+   <section class="products">
+      <div class="product" *ngFor="let product of filteredGifts">
+        <img [src]="product.image" [alt]="product.name">
+        <h2>{{ product.name }}</h2>
+        <p>Rs.{{ product.price }}</p>
+        <div>
+          <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
+          <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
+        </div>
+          <br>
+        <button (click)="addToCart()">Add to Cart</button> 
+      </div>
+    </section> 
+    </div>
+
+
+    <div *ngIf="viewType === 'recipient'">
+        <div>
+          <h1>Products for {{ selectedRecipient }}</h1>
+          <section class="products">
+          <div class="product" *ngFor="let product of filteredRecipient">
+            <img [src]="product.image" [alt]="product.name">
+            <h2>{{ product.name }}</h2>
+            <p>Rs.{{ product.price }}</p>
+            <div>
+              <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
+              <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
+            </div>
+              <br>
+            <button (click)="addToCart()">Add to Cart</button> </div>
+          </section>
+        </div>
+      </div>
