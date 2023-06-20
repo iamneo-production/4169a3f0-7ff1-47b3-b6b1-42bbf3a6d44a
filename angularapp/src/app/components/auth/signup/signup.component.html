@@ -1,4 +1,8 @@
-<section>
+<section style="background: url('assets/image/user.jpg')no-repeat; 
+background-position: center;
+background-size: cover;
+min-height: 100vh;
+width: 100%;">
     <div class="container">
         <div class="form-box">
             <form (ngSubmit)="submitForm()" name="Formfill">
@@ -20,7 +24,8 @@
                     <input type="password" name="cPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword" (input)="validateConfirmPassword()">
                 </div>
                 <div class="button">
-                    <button type="submit" class="btn">Register</button> 
+                    <button type="submit" class="btn" (click)="register()"[disabled]="">Register</button>
+
                 </div>
                 <div class="group">
                     <span><a href="#">Forget-Password</a></span>
@@ -29,10 +34,11 @@
             </form>
         </div>
     </div>
-    <div class="popup-container" *ngIf="showPopup">
+    <!-- <div class="popup-container" *ngIf="showPopup">
         <div class="popup">
             <p>Registration successful</p>
             <button class="btn-ok" (click)="hidePopup()">OK</button>
         </div>
-    </div>
+    </div> -->
+    <!-- <class="btn-ok" (click)="hidePopup()">Register</button>button  -->
 </section>
