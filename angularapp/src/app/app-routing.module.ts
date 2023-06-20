@@ -13,6 +13,8 @@ import { CartComponent } from './components/customerside/cart/cart.component';
 import { CustomerorderComponent } from './components/customerside/customerorder/customerorder.component';
 import { UserreviewComponent } from './components/customerside/userreview/userreview.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { ViewpageComponent } from './components/customerside/userhomepage/viewpage/viewpage.component';
+import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path:'login' , component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path:'userhomepage' , component:UserhomepageComponent},
+  {path:'viewpage' , component:ViewpageComponent},
+  {path:'giftfinder' , component:GiftfinderComponent},
   {path: 'cart' , component:CartComponent},
   {path: 'customerorder' , component:CustomerorderComponent},
   {path: 'user-review' , component:UserreviewComponent},
