@@ -13,6 +13,7 @@ export class OrderComponent implements OnInit {
       "giftName":"Wooden frame",
       "giftPrice": "200",
       "giftQuantity": "3pcs",
+      "giftPaid":"200",
       },
     {
         "orderId" : "2",
@@ -20,6 +21,7 @@ export class OrderComponent implements OnInit {
         "giftName":"Wooden frame",
         "giftPrice": "200",
         "giftQuantity": "5pcs",
+        "giftPaid":"200",
         },
         {
           "orderId" : "3",
@@ -27,6 +29,7 @@ export class OrderComponent implements OnInit {
           "giftName":"Wooden frame",
           "giftPrice": "200",
           "giftQuantity": "7pcs",
+          "giftPaid":"200",
           },
           {
             "orderId" : "4",
@@ -34,6 +37,7 @@ export class OrderComponent implements OnInit {
             "giftName":"Wooden frame",
             "giftPrice": "200",
             "giftQuantity": "10pcs",
+            "giftPaid":"200",
             },
             {
               "orderId" : "4",
@@ -41,6 +45,7 @@ export class OrderComponent implements OnInit {
               "giftName":"Wooden frame",
               "giftPrice": "200",
               "giftQuantity": "10pcs",
+              "giftPaid":"200",
               },
               {
                 "orderId" : "4",
@@ -48,6 +53,7 @@ export class OrderComponent implements OnInit {
                 "giftName":"Wooden frame",
                 "giftPrice": "200",
                 "giftQuantity": "10pcs",
+                "giftPaid":"200",
                 },
                 {
                   "orderId" : "4",
@@ -55,6 +61,7 @@ export class OrderComponent implements OnInit {
                   "giftName":"Wooden frame",
                   "giftPrice": "200",
                   "giftQuantity": "10pcs",
+                  "giftPaid":"200",
                   },
                   {
                     "orderId" : "4",
@@ -62,6 +69,7 @@ export class OrderComponent implements OnInit {
                     "giftName":"Wooden frame",
                     "giftPrice": "200",
                     "giftQuantity": "10pcs",
+                    "giftPaid":"200",
                     },
                     {
                       "orderId" : "4",
@@ -69,6 +77,7 @@ export class OrderComponent implements OnInit {
                       "giftName":"Wooden frame",
                       "giftPrice": "200",
                       "giftQuantity": "10pcs",
+                      "giftPaid":"200",
                       },
   ]
 

@@ -23,11 +23,12 @@
 <div>
 <table id="order1">
 <thead>
-    <th id="orderId">Order Id</th>
-    <th id="userId">User id</th>
-    <th id="giftName">Gift Name</th>
-    <th id="giftPrice">Price</th>
-    <th id="giftQuantity">Quantity</th>
+    <th id="orderid">Order Id</th>
+    <th id="userid">User id</th>
+    <th id="giftname">Gift Name</th>
+    <th id="giftprice">Gift Price</th>
+    <th id="giftpaid">Amount Paid</th>
+    <th id="giftquantity">Quantity</th>
 </thead>
 <tbody>
     <tr *ngFor="let gift of gifts ; let i =index ">
@@ -35,6 +36,7 @@
         <td>User{{i+1}}</td>
         <td>{{gift.giftName}}</td>
         <td>{{gift.giftPrice}}</td>
+        <td>{{gift.giftPaid}}</td>
         <td>{{gift.giftQuantity}}</td>
     </tr>
 </tbody>
