@@ -1,0 +1,66 @@
+<router-outlet></router-outlet>
+<div class="head">
+    <nav class="navbar navbar-dark">
+        <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-home" href="../admin">Home</a>
+        <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="../admin">Logout</a>
+  </nav>
+    </div>
+    
+    <div class="container">
+    <div class="card">
+        <form [formGroup]="userform">
+          <div class="mt-5 box">
+           <div class="form-row">
+               <div class="col-md-12">
+                   <h1 style="align-items:center;">Edit Theme</h1>
+                   <div class="form-group mt-3">
+                       <Label>Theme Name</Label>
+                   </div>
+                   <div class="form-row" style="margin-top: -10px;">
+                       <div class="col">
+                           <input type="text" id="editThemeName" placeholder="Enter the theme name" formControlName="name" class="form-control">
+                       </div>
+                   </div>
+               </div>
+      
+               <div class="col-md-12">
+                   <div class="form-group mt-4" >
+                       <Label>Theme Price</Label>
+                   </div>
+                   <div class="form-row" style="margin-top: -10px;">
+                       <div class="col">
+                           <input type="text" id="editThemePrice" placeholder="Enter the Theme price" formControlName="price" class="form-control">
+                       </div>
+                   </div>
+               </div>
+      
+               <div class="col-md-12">
+                   <div class="form-group mt-4">
+                       <Label>Description</Label>
+                   </div>
+                   <div class="form-row" style="margin-top: -10px;">
+                       <div class="col">
+                           <input type="text" id="editThemeDescription" placeholder="Enter the Description" formControlName="description" class="form-control">
+                       </div>
+                   </div>
+               </div>
+    
+               <div class="form-row mt-4">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-dark" (click)="edit()" id="update">Update</button>
+                 </div>
+                 <div class="col-md-6"> 
+                    <input type="reset" class="btn btn-dark">
+                </div>
+                
+            </div>
+           </div>
+          </div>
+       </form>
+      </div>
+    </div>
