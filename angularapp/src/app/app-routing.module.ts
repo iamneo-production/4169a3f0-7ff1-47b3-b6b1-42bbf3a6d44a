@@ -15,7 +15,7 @@ import { UserreviewComponent } from './components/customerside/userreview/userre
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { ViewpageComponent } from './components/customerside/userhomepage/viewpage/viewpage.component';
 import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
-
+import { PaymentpageComponent } from './components/customerside/paymentpage/paymentpage.component';
 
 const routes: Routes = [
   {path:'' , component:LoginComponent},
@@ -34,7 +34,8 @@ const routes: Routes = [
   {path: 'cart' , component:CartComponent},
   {path: 'customerorder' , component:CustomerorderComponent},
   {path: 'user-review' , component:UserreviewComponent},
-  {path:'logout' , component:LoginComponent}
+  {path:'logout' , component:LoginComponent},
+  {path:'paymentpage', component:PaymentpageComponent}
 ];
 
 @NgModule({
