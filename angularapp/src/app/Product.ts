@@ -1,9 +1,15 @@
-export class Product{
-    image:String;
-    name:String;
-    price:number;
-    rating:number;
+export interface Product {
+    id: number ;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    rating: number;
     occasion: string;
-   recipient: string;
-   type: string;
-}
+    revisedRate?:number;
+    recipient: string;  
+    type: string;
+    sold: number;
+    dateTime: Date;
+    stock:number;
+  }
