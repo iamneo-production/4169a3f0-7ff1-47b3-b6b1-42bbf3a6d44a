@@ -1,0 +1,121 @@
+
+
+<html>
+<head>
+	
+	<script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="paymentpage.component.css">
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+		  <p>Payment methods</p>
+		  <hr style="border:1px solid #ccc; margin: 0 15px;">
+		  <div class="methods">
+			<div (click)="selectPaymentMethod('card')"  (click)="doFun()" [style.color]="tColorA" [ngClass]="{'selected': selectedMethod === 'card'}">
+			 Payment by card
+			</div>
+			<div (click)="selectPaymentMethod('banks')"  (click)="doFunA()" [style.color]="tColorB" [ngClass]="{'selected': selectedMethod === 'banks'}">
+			Internet banks
+			</div>
+			<div (click)="selectPaymentMethod('applepay')" (click)="doFunB()" [style.color]="tColorC" [ngClass]="{'selected': selectedMethod === 'applepay'}">
+			Apple/Google pay
+			</div>
+		  </div>
+		  <hr style="border:1px solid #ccc; margin: 0 15px;">
+		</div>
+		<div class="center">
+			<a href="https://www.shift4shop.com/credit-card-logos.html"><img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="250" height="auto"/></a>
+			<hr style="border:1px solid #ccc; margin: 0 15px;">
+		  <div *ngIf="selectedMethod === 'card'">
+			<div class="card-details">
+			  <form [formGroup]=paymentForm>
+				<!-- Existing form fields for card payment -->
+				<div class="form-group">
+				<label>Name On card</label>
+				
+					<div class="c-name" id="c-name">
+						<input type="text" id="name" formControlName="name"  placeholder="Card name"  >
+					</div>
+					<span class="error" *ngIf="name?.invalid && name?.touched">name is required
+					</span>
+				</div>
+					<p>Card number</p>
+					<div class="c-number" id="c-number">
+						<input id="number" formControlName="number" placeholder="Card number" maxlength="16" >
+					</div>
+					<span class="error" *ngIf="number?.invalid && number?.touched" >number is required
+					</span>
+					<div class="c-details">
+						<div>
+							<p>Expiry date</p>
+							<input id="e-date" class="cc-exp"  formControlName="date" placeholder="MM/YY" maxlength="5" >
+							<span class="error" *ngIf="date?.invalid && date?.touched">date is required
+							</span>
+						</div>
+						
+						<div>
+							<p>CVV</p>
+							<div class="cvv-box" id="cvv-box">
+								<input id="cvv" class="cc-cvv" formControlName="cvv" placeholder="CVV" maxlength="3" >
+							</div>
+							<span class="error" *ngIf="cvv?.invalid && cvv?.touched">date is required
+							</span>
+						</div>
+					</div>
+					<div class="email">
+						<p>Email</p>
+						<input type="email" formControlName="email" placeholder="example@email.com" id="email" required>
+					</div>
+					<span class="error" *ngIf="email?.invalid && email?.touched">date is required
+					</span>
+					<button>PAY NOW</button>
+			  </form>
+			</div>
+		  </div>
+		  <div *ngIf="selectedMethod === 'banks'">
+			<!-- Content for Internet banks -->
+			<div class="card-details">
+			<form>
+				<!-- Existing form fields for card payment -->
+				<p>Select Bank</p>
+					<div>
+						<select id="bankName" class="bankName" name="bankName" required>
+							<option value="">Select bank</option>
+							<option value="bank1">Bank 1</option>
+							<option value="bank2">Bank 2</option>
+						  </select>
+						<i style="margin: 0;"></i>
+					</div>
+					<button>PAY NOW</button>
+			</form>
+		</div>
+		  </div>
+		  <div *ngIf="selectedMethod === 'applepay'">
+			<!-- Content for Apple/Google pay -->
+			<div class="upi">
+			<form>
+				
+			<p>Apple/Google pay content</p>
+			<div class="qr-code-container">
+				<h4>Scan the UPI QR Code:</h4>
+				<img src="assets/image/qrcode.png" alt="QR Code" style="width: 200px; height: auto;">	
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
+		<div class="right">
+		  <p>Order information</p>
+		  <hr style="border:1px solid #ccc; margin: 0 15px;">
+		  <div class="details">
+			<!-- Existing order information details -->
+		  </div>
+		  <hr style="border:1px solid #ccc; margin: 0 15px;">
+		  <a href="https://www.shift4shop.com/credit-card-logos.html"><img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="100%" height="auto" /></a>
+		</div>
+	  </div>
+	  
+</body>
+</html>
+
