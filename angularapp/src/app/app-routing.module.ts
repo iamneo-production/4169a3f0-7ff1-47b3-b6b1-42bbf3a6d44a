@@ -12,6 +12,10 @@ import { UserhomepageComponent } from './components/customerside/userhomepage/us
 import { CartComponent } from './components/customerside/cart/cart.component';
 import { CustomerorderComponent } from './components/customerside/customerorder/customerorder.component';
 import { UserreviewComponent } from './components/customerside/userreview/userreview.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { ViewpageComponent } from './components/customerside/userhomepage/viewpage/viewpage.component';
+import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
+
 
 const routes: Routes = [
   {path:'' , component:LoginComponent},
@@ -22,8 +26,11 @@ const routes: Routes = [
   {path:'edit',component:EditComponent},
   {path:'order',component:OrderComponent},
   {path:'admin-review',component:AdminreviewComponent},
-  {path:'login' , component:LoginComponent},
+  {path:'login' , component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path:'userhomepage' , component:UserhomepageComponent},
+  {path:'viewpage' , component:ViewpageComponent},
+  {path:'giftfinder' , component:GiftfinderComponent},
   {path: 'cart' , component:CartComponent},
   {path: 'customerorder' , component:CustomerorderComponent},
   {path: 'user-review' , component:UserreviewComponent},
@@ -31,7 +38,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
