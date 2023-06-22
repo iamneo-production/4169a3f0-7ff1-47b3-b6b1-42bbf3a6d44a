@@ -6,11 +6,11 @@
     font-family: "poppins",sans-serif;
 }
 section{
-    /* background: url('/home/coder/project/workspace/angularapp/src/assets/image/full of gifts with musturd black color for website.jpg')no-repeat; */
+    /* background: url('assets/image/user.jpg')no-repeat; 
     background-position: center;
     background-size: cover;
     min-height: 100vh;
-    width: 100%;
+    width: 100%; */
 }
 .container{
     display: flex;

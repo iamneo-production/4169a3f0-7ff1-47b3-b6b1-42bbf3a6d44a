@@ -82,5 +82,7 @@ export class SignupComponent implements OnInit {
   hidePopup() {
     this.showPopup = false;
   }
-
+  register(){
+    alert('Registered Succesful');
+  }
 }

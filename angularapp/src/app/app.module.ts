@@ -24,7 +24,9 @@ import { EditComponent } from './components/adminside/edit/edit.component';
 import { AddDeleteComponent } from './components/adminside/add-delete/add-delete.component';
 import { StarRatingComponent } from './components/adminside/star-rating/star-rating.component';
 import{ ProductsService} from './products.service';
-
+import { ViewpageComponent } from './components/customerside/userhomepage/viewpage/viewpage.component';
+import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
+import { PaymentpageComponent } from './components/customerside/paymentpage/paymentpage.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,9 @@ import{ ProductsService} from './products.service';
     EditComponent,
     AddDeleteComponent,
     StarRatingComponent,
+    ViewpageComponent,
+    GiftfinderComponent,
+    PaymentpageComponent,
    
   ],
   imports: [
@@ -53,6 +58,7 @@ import{ ProductsService} from './products.service';
    HttpClientModule,
    ReactiveFormsModule,
    FormsModule,
+   
    
    AppRoutingModule
 
