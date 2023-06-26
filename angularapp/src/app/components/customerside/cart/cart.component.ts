@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
+
+import { ProductsService } from 'src/app/products.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  
+  items: any[]=[];
+  cartTotal: number = 0;
 
-  constructor() { }
+  constructor(private router: Router, private productsService: ProductsService) { }
 
   ngOnInit(): void {
+    this.fetchCartItems();
   }
 
+  fetchCartItems() {
+    this.productsService.getCartItems().subscribe(cartItems => {
+      this.items = cartItems
+      this.cartTotal = this.items.reduce((sum: number, item: any) => parseFloat(item.orderDetails.orderPrice) + sum, 0);
+    });
+  }
+
+  deleteProduct(productId: number): void {
+    this.productsService.removeFromCart(productId).subscribe(() => {
+      this.fetchCartItems();
+    });
+  }
+ 
+  editProduct(productId: number): void {
+    this.router.navigate(['/customerorder', productId]);
+  }
+
+  payment(){
+    this.router.navigate(['/paymentpage'])
+  }
+  
+  
 }
