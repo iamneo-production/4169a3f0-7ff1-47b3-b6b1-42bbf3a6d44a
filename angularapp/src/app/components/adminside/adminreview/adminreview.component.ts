@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./adminreview.component.css']
 })
 export class AdminreviewComponent {
+  title = 'Angular Search Using ng2-search-filter';
   listdata:any=[
     {
       "name":"Harry",
