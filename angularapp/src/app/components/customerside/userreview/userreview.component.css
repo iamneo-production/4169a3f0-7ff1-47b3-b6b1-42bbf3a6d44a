@@ -1,0 +1,78 @@
+
+form div {
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 150%;
+    padding: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #FFDB58;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #a7881c;
+  }
+
+  .stars {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    flex-direction: row-reverse;
+  }
+  
+  .stars input[type="radio"] {
+    display: none;
+  }
+  
+  .stars label {
+    cursor: pointer;
+    color: #ccc;
+    margin-right: 5px;
+  }
+  
+  .stars label:before {
+    content: "\2605";
+    font-size: 50px;
+  }
+  
+  .stars input[type="radio"]:checked ~ label {
+    color: #FFDB58;
+  }
+  
+
+  .review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    margin-top: 60px;
+  }
+  
+  .review-box textarea {
+    width: 150%;
+    height: 150px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: Arial, sans-serif; /* Change the font family */
+  }
+  .error{
+    color: red
+}
