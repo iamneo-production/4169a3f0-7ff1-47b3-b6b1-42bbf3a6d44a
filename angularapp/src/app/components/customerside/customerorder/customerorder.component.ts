@@ -25,6 +25,7 @@ export class CustomerorderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initializeForm();
     this.activatedRoute.paramMap.subscribe(params => {
       const productId = params.get('id');
       if (productId) {
@@ -35,7 +36,6 @@ export class CustomerorderComponent implements OnInit {
         this.errorMessage = 'Invalid product ID. Please try again.';
       }
     });
-    this.initializeForm();
   }
 
   getProductById(productId: number) {
@@ -43,6 +43,11 @@ export class CustomerorderComponent implements OnInit {
       (product: Product | undefined) => {
         if (product) {
           this.selectedProduct = product;
+          this.productService.getItemFromCart(productId).subscribe(cartItem => {
+            if (cartItem && cartItem.orderDetails) {
+              this.orderForm.setValue(cartItem.orderDetails);
+            }
+          });
         } else {
           console.log('Product not found');
         }
@@ -70,6 +75,9 @@ export class CustomerorderComponent implements OnInit {
   placeOrder() {
     if (this.orderForm.valid) {
       // You can perform the necessary actions to place the order here
+      if (this.selectedProduct) {
+        this.productService.addToCart(this.selectedProduct, this.orderForm.value).subscribe();
+      }
       // For demonstration purposes, we will navigate to the payment page
       this.router.navigate(['/cart']);
     } else {
@@ -82,4 +90,3 @@ export class CustomerorderComponent implements OnInit {
     return this.orderForm.get('name');
   }
 }
-

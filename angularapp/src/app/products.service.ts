@@ -6,7 +6,7 @@ import { Product } from 'src/app/Product';
   providedIn: 'root'
 })
 export class ProductsService {
-  constructor() { }
+ 
 
   products = [
     {
@@ -193,5 +193,31 @@ export class ProductsService {
   getProductById(productId: any){
     const product = this.products.find(p => p.id === productId)!;
     return of(product);
+  }
+
+  getCartItems() {
+    return of(Object.values(JSON.parse(localStorage.getItem("cartItems") || "{}")));
+  }
+
+  getItemFromCart(productId: number) {
+    const cart = JSON.parse(localStorage.getItem("cartItems") || "{}");
+    return of(cart[productId]);
+  }
+
+  addToCart(product: Product, orderDetails: any){
+    const cart = JSON.parse(localStorage.getItem("cartItems") || "{}");
+    cart[product.id] = {
+      product,
+      orderDetails
+    }
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+    return of(true);
+  }
+
+  removeFromCart(productId: number){
+    const cart = JSON.parse(localStorage.getItem("cartItems") || "{}");
+    cart[productId] = undefined;
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+    return of(true);
   }
 }
