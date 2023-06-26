@@ -22,8 +22,11 @@ export class CartComponent implements OnInit {
   fetchCartItems() {
     this.productsService.getCartItems().subscribe(cartItems => {
       this.items = cartItems
-      this.cartTotal = this.items.reduce((sum: number, item: any) => parseFloat(item.orderDetails.orderPrice) + sum, 0);
+      this.updateCartTotal();
     });
+  }
+  updateCartTotal() {
+    this.cartTotal = this.items.reduce((sum: number, item: any) => (parseFloat(item.orderDetails.orderPrice) * item.orderDetails.productQuantity) + sum, 0);
   }
 
   deleteProduct(productId: number): void {
@@ -34,6 +37,11 @@ export class CartComponent implements OnInit {
  
   editProduct(productId: number): void {
     this.router.navigate(['/customerorder', productId]);
+  }
+  updateQuantity(item: any, quantity: number) {
+    item.orderDetails.productQuantity = quantity;
+    this.productsService.addToCart(item.product, item.orderDetails).subscribe();
+    this.updateCartTotal();
   }
 
   payment(){

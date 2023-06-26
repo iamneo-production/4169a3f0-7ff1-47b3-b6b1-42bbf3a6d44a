@@ -24,7 +24,10 @@ background-size: cover;">
                 <td>{{i+1}}</td>
                 <td>{{item.product.name}}</td>
                 <td>{{item.orderDetails.orderPrice}}</td>
-                <td>1</td>
+                <td> <button class="btn btn-danger" (click)="updateQuantity(item, item.orderDetails.productQuantity - 1)">-</button>
+                    {{item.orderDetails.productQuantity}}
+                    <button class="btn btn-danger"  (click)="updateQuantity(item, item.orderDetails.productQuantity + 1)">+</button>
+                </td>
                 <td>
                     <button class="btn btn-danger" (click)="editProduct(item.product.id)">Edit</button>
                     <button class="btn btn-danger"  (click)="deleteProduct(item.product.id)">Delete</button>
