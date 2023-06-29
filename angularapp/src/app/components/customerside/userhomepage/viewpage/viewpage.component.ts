@@ -25,7 +25,9 @@ export class ViewpageComponent implements OnInit {
   
     this.route.queryParams.subscribe(params => {  //retrieving queryparams from url
       this.viewType = params['type'];
-      this.products = this.productsService.getProducts();  //assigning product data from service to products property of current component
+      this.productsService.getProducts().subscribe((products: Product[]) => {
+        this.products = products;
+      });  //assigning product data from service to products property of current component
       
       if (this.viewType === 'occasion') {   //conditional statement to decide on which segment to run on viewpage
         this.selectedOccasion = params['occasion'];
@@ -39,8 +41,8 @@ export class ViewpageComponent implements OnInit {
     }});
   }
 
-  addToCart() {
-    this.router.navigate(['/customerorder']);
+  addToCart(productId: number) {
+    this.router.navigate(['/customerorder', productId]);
   }
 
   // To get an array of size equal to given product rating (filled stars)

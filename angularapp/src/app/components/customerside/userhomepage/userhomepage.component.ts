@@ -10,11 +10,12 @@ import { ProductsService } from 'src/app/products.service';
 })
 export class UserhomepageComponent implements OnInit {
   //Required array declarations
-  products: any[];
+  products: any[]=[];
   bestSellers: any[] = [];
   trending: any[] = [];
   topNewArrivals: Product[] = [];
   occasionProducts: Product[] = [];
+  
 
  //Injecting product service and Router to userhompage component
   constructor(private router: Router,private productsService: ProductsService) { } 
@@ -22,7 +23,7 @@ export class UserhomepageComponent implements OnInit {
 
   ngOnInit(): void {
    //Fetch list of products and assign to products property of current component
-    this.products = this.productsService.getProducts(); 
+    this.getProducts(); 
    // calling the methods defined below in the current component
     this.findBestSellers(); 
     this.getTopNewArrivals();
@@ -31,10 +32,20 @@ export class UserhomepageComponent implements OnInit {
     
   }
   
+  getProducts() {
+    this.productsService.getProducts().subscribe(
+      (products: Product[]) => {
+        this.products = products;
+      },
+      (error: any) => {
+        console.log('Error retrieving products:', error);
+      }
+    );
+  }
 
   //To naviagte to placeorder page on clicking addtocart
-  addToCart() {
-    this.router.navigate(['/customerorder']);
+  addToCart(productId: number) {
+    this.router.navigate(['/customerorder', productId]);
   }
 
 
@@ -111,8 +122,8 @@ export class UserhomepageComponent implements OnInit {
 
 
   //To calculate discount about for spl occasions offers
-  getDiscountPercentage(originalRate: number, revisedRate: number): number {
-    const discount = (originalRate - revisedRate) / originalRate * 100;
+  getDiscountPercentage(originalRate: number, revisedRate?: number ): number {
+    const discount = (originalRate - (revisedRate ?? 0)) / originalRate * 100;
     return Math.round(discount);
   }
   
