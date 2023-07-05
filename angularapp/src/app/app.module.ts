@@ -11,7 +11,7 @@ import { AdminhomepageComponent } from './components/adminside/adminhomepage/adm
 import { OrderComponent } from './components/adminside/order/order.component';
 import { AdminreviewComponent } from './components/adminside/adminreview/adminreview.component';
 import { CustomersideComponent } from './components/customerside/customerside.component';
-//import { CartComponent } from './components/cart/cart.component';
+
 import { CustomerorderComponent } from './components/customerside/customerorder/customerorder.component';
 import { UserhomepageComponent } from './components/customerside/userhomepage/userhomepage.component';
 import { UserreviewComponent } from './components/customerside/userreview/userreview.component';
@@ -22,7 +22,12 @@ import { UpdategiftComponent } from './components/adminside/updategift/updategif
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/adminside/edit/edit.component';
 import { AddDeleteComponent } from './components/adminside/add-delete/add-delete.component';
-
+import { StarRatingComponent } from './components/adminside/star-rating/star-rating.component';
+import{ ProductsService} from './products.service';
+import { ViewpageComponent } from './components/customerside/userhomepage/viewpage/viewpage.component';
+import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
+import { PaymentpageComponent } from './components/customerside/paymentpage/paymentpage.component';
+import { CartComponent } from './components/customerside/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,7 @@ import { AddDeleteComponent } from './components/adminside/add-delete/add-delete
     OrderComponent,
     AdminreviewComponent,
     CustomersideComponent,
-    //CartComponent,
+
     CustomerorderComponent,
     UserhomepageComponent,
     UserreviewComponent,
@@ -43,6 +48,11 @@ import { AddDeleteComponent } from './components/adminside/add-delete/add-delete
     UpdategiftComponent,
     EditComponent,
     AddDeleteComponent,
+    StarRatingComponent,
+    ViewpageComponent,
+    GiftfinderComponent,
+    PaymentpageComponent,
+    CartComponent,
    
   ],
   imports: [
@@ -51,11 +61,12 @@ import { AddDeleteComponent } from './components/adminside/add-delete/add-delete
    ReactiveFormsModule,
    FormsModule,
    
+   
    AppRoutingModule
 
     //NgbModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

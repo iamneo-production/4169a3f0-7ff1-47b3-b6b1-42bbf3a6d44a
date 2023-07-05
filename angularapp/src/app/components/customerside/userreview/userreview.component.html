@@ -1,1 +1,46 @@
-<p>userreview works!</p>
+<h1 class="header">Customer Review Page</h1>
+<div class="bg-image">
+  <div class="review-container" >
+      
+      <form [formGroup]=reviewForm>
+        <div class="rating">
+          <label for="rating">Your overall rating</label>
+          <div class="stars">
+            <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="review.rating" required>
+            <label for="star5"></label>
+            <input type="radio" id="star4" name="rating" value="4" [(ngModel)]="review.rating">
+            <label for="star4"></label>
+            <input type="radio" id="star3" name="rating" value="3" [(ngModel)]="review.rating">
+            <label for="star3"></label>
+            <input type="radio" id="star2" name="rating" value="2" [(ngModel)]="review.rating">
+            <label for="star2"></label>
+            <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="review.rating">
+            <label for="star1"></label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+        <div class="review-box">
+          <label for="comment">Your review</label>
+          <textarea id="comment" class="form-control" formControlName="revb" placeholder="Please leave your review" [(ngModel)]="review.comment" required></textarea>
+         
+        </div> 
+        <span class="error" *ngIf="revb?.invalid && revb?.touched">review is required
+        </span>
+       
+        <div>
+        </div>
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Enter your name" [(ngModel)]="review.name" required>
+        </div>
+        <div>
+          <label for="email">Product Name</label>
+          <input type="email" id="email" placeholder="Enter your product name" [(ngModel)]="review.email" required>
+        </div>
+            
+        <button type="submit">Submit Review</button>
+        
+      </form>
+    </div>
+  </div>
+    
