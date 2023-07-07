@@ -69,6 +69,7 @@ export class CustomerorderComponent implements OnInit {
       giftModel: ['', Validators.required],
       orderDescription: ['', Validators.required],
       selectThemeModel: ['', Validators.required],
+      productQuantity: [1, Validators.required],
     });
   }
 
