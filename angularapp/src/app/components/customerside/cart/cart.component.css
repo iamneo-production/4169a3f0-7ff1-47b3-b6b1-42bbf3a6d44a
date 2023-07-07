@@ -1,0 +1,54 @@
+h1{
+    margin-top: 80px;
+    text-align: center;
+    color: black;
+}
+.container {
+    max-width: auto;
+    margin-top: 20px;
+    /*margin: 0 auto; */
+    /*background-color: #fff; */
+    background-color: rgba(218, 217, 210, 0.753); 
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 5px;
+      font-weight: bold;
+    }
+    
+    th {
+      background-color: #e6f2ff; 
+      
+      color: #2b6cb0; 
+    }
+    .payment-button {
+      display: fixed;
+      right: 70px;
+      bottom: 100px;
+    }
+    
+    .payment-button button {
+      background-color: rgb(12, 74, 59);
+      color: #ffffff;
+      border: #ffffff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      font-style: oblique;
+    }
+    
+    .payment-button button:hover {
+      background-color: rgb(60, 136, 117);
+    }
+  
+   
