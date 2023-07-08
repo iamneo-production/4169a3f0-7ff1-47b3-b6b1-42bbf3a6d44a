@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GiftModel } from 'src/app/gift-model';
 import { GiftService } from 'src/app/gift.service';
@@ -8,13 +8,18 @@ import { GiftService } from 'src/app/gift.service';
   templateUrl: './updategift.component.html',
   styleUrls: ['./updategift.component.css']
 })
-export class UpdategiftComponent implements OnInit {
-
+export class UpdategiftComponent {
   name:any;
   price:any;
   image:any;
   quantity:any;
   details:any;
+  occassion:any;
+  rating:any;
+  sold:any;
+  datetime:any;
+  discount:any;
+  recipient:any;
   gifts:GiftModel=new GiftModel();
   id:number;
   /*userform:FormGroup;
@@ -58,5 +63,4 @@ export class UpdategiftComponent implements OnInit {
     var msg=confirm("Updated Successfully")
     this.router.navigate(['addgifts']);
   }
-
 }
