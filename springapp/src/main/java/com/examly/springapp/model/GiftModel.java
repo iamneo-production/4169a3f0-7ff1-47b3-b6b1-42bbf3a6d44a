@@ -3,10 +3,14 @@ package com.examly.springapp.model;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+
+
+
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="giftmodels")
@@ -16,6 +20,7 @@ private int giftId;
 private String giftName;
 private String GiftImageUrl;
 private String giftDetails;
+
 private Integer giftPrice;
 private Integer giftQuantity;
 private String occassion;
@@ -24,16 +29,19 @@ private String recipient;
 private Integer sold;
 private LocalDateTime dateTime;
 private Double discountPrice;
+
 public String getOccassion() {
 	return occassion;
 }
 public void setOccassion(String occassion) {
 	this.occassion = occassion;
 }
+
 public Integer getRating() {
 	return rating;
 }
 public void setRating(Integer rating) {
+
 	this.rating = rating;
 }
 public String getRecipient() {
@@ -42,10 +50,12 @@ public String getRecipient() {
 public void setRecipient(String recipient) {
 	this.recipient = recipient;
 }
+
 public Integer getSold() {
 	return sold;
 }
 public void setSold(Integer sold) {
+
 	this.sold = sold;
 }
 
@@ -55,18 +65,22 @@ public LocalDateTime getDateTime() {
 public void setDateTime(LocalDateTime dateTime) {
 	this.dateTime = dateTime;
 }
+
 public Double getDiscountPrice() {
 	return discountPrice;
 }
 public void setDiscountPrice(Double discountPrice) {
+
 	this.discountPrice = discountPrice;
 }
+
 
 
 public Integer getGiftId() {
 	return giftId;
 }
 public void setGiftId(Integer giftId) {
+
 	this.giftId = giftId;
 }
 public String getGiftName() {
@@ -87,6 +101,7 @@ public String getGiftDetails() {
 public void setGiftDetails(String giftDetails) {
 	this.giftDetails = giftDetails;
 }
+
 public Integer getGiftPrice() {
 	return giftPrice;
 }
@@ -97,6 +112,7 @@ public Integer getGiftQuantity() {
 	return giftQuantity;
 }
 public void setGiftQuantity(Integer giftQuantity) {
+
 	this.giftQuantity = giftQuantity;
 }
 

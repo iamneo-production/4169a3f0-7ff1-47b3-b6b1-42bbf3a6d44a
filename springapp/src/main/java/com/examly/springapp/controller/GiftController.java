@@ -1,4 +1,5 @@
 package com.examly.springapp.controller;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +56,7 @@ public ResponseEntity<String> editGift(@PathVariable int giftId,@RequestBody Gif
    // GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
    
     GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
-   
+    
     existingGift.setGiftId(g.getGiftId());
     existingGift.setGiftName(g.getGiftName());
     existingGift.setGiftImageUrl(g.getGiftImageUrl());
