@@ -53,6 +53,8 @@ public ResponseEntity<String> editGift(@PathVariable int giftId,@RequestBody Gif
     // Use the 'updatedGift' parameter to access the updated details sent in the request body
 
     // Example implementation:
+   // GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
+   
     GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
     
     existingGift.setGiftId(g.getGiftId());
