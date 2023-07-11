@@ -20,7 +20,7 @@ import com.examly.springapp.exception.ResourceNotFoundException;
 
 import com.examly.springapp.model.GiftModel;
 
-@CrossOrigin(origins = "https://8081-adafccfdcacfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-fceddddbfdedffcfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 @RequestMapping("/admin")
 public class GiftController {

@@ -2,7 +2,8 @@ package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 
 
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 @Table(name="giftmodels")
 public class GiftModel {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int giftId;
 private String giftName;
 private String GiftImageUrl;
