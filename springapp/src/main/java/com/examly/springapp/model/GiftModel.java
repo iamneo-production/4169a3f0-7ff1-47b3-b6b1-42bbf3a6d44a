@@ -2,38 +2,48 @@ package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-import jakarta.persistence.Entity;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import javax.persistence.Entity;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name="giftmodels")
 public class GiftModel {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int giftId;
 private String giftName;
 private String GiftImageUrl;
 private String giftDetails;
-private int giftPrice;
-private int giftQuantity;
+
+private Integer giftPrice;
+private Integer giftQuantity;
 private String occassion;
-private int rating;
+private Integer rating;
 private String recipient;
-private int sold;
+private Integer sold;
 private LocalDateTime dateTime;
-private double discountPrice;
+private Double discountPrice;
+
 public String getOccassion() {
 	return occassion;
 }
 public void setOccassion(String occassion) {
 	this.occassion = occassion;
 }
-public int getRating() {
+
+public Integer getRating() {
 	return rating;
 }
-public void setRating(int rating) {
+public void setRating(Integer rating) {
+
 	this.rating = rating;
 }
 public String getRecipient() {
@@ -42,10 +52,12 @@ public String getRecipient() {
 public void setRecipient(String recipient) {
 	this.recipient = recipient;
 }
-public int getSold() {
+
+public Integer getSold() {
 	return sold;
 }
-public void setSold(int sold) {
+public void setSold(Integer sold) {
+
 	this.sold = sold;
 }
 
@@ -55,18 +67,22 @@ public LocalDateTime getDateTime() {
 public void setDateTime(LocalDateTime dateTime) {
 	this.dateTime = dateTime;
 }
-public double getDiscountPrice() {
+
+public Double getDiscountPrice() {
 	return discountPrice;
 }
-public void setDiscountPrice(double discountPrice) {
+public void setDiscountPrice(Double discountPrice) {
+
 	this.discountPrice = discountPrice;
 }
 
 
-public int getGiftId() {
+
+public Integer getGiftId() {
 	return giftId;
 }
-public void setGiftId(int giftId) {
+public void setGiftId(Integer giftId) {
+
 	this.giftId = giftId;
 }
 public String getGiftName() {
@@ -87,16 +103,18 @@ public String getGiftDetails() {
 public void setGiftDetails(String giftDetails) {
 	this.giftDetails = giftDetails;
 }
-public int getGiftPrice() {
+
+public Integer getGiftPrice() {
 	return giftPrice;
 }
-public void setGiftPrice(int giftPrice) {
+public void setGiftPrice(Integer giftPrice) {
 	this.giftPrice = giftPrice;
 }
-public int getGiftQuantity() {
+public Integer getGiftQuantity() {
 	return giftQuantity;
 }
-public void setGiftQuantity(int giftQuantity) {
+public void setGiftQuantity(Integer giftQuantity) {
+
 	this.giftQuantity = giftQuantity;
 }
 

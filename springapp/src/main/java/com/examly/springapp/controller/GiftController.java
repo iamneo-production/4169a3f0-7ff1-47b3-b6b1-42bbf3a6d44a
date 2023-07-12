@@ -20,7 +20,7 @@ import com.examly.springapp.exception.ResourceNotFoundException;
 
 import com.examly.springapp.model.GiftModel;
 
-@CrossOrigin(origins = "https://8081-adafccfdcacfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-fceddddbfdedffcfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 @RequestMapping("/admin")
 public class GiftController {
@@ -53,6 +53,8 @@ public ResponseEntity<String> editGift(@PathVariable int giftId,@RequestBody Gif
     // Use the 'updatedGift' parameter to access the updated details sent in the request body
 
     // Example implementation:
+   // GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
+   
     GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
     
     existingGift.setGiftId(g.getGiftId());
