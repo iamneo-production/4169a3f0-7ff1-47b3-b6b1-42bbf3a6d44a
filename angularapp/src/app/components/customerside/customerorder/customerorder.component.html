@@ -1,1 +1,109 @@
-<p>customerorder works!</p>
+<!-- CUSTOMER ORDER PAGE COMPONENT 
+                WORK BY- NITHYA S-->
+  
+                <app-customerside></app-customerside>
+                <h1> PLACE YOUR ORDER HERE!</h1>
+                <div class="container">
+                  <div class="product-container">
+                    <div class="product-image">
+                      <img [src]="selectedProduct?.image" alt="Product Image">
+                    </div>
+                    <!-- Product details are added -->
+                    <div class="product-details" *ngIf="selectedProduct">
+                      <h2>Product Details</h2>
+                      <p><strong>Name:</strong> {{ selectedProduct.name }}</p>
+                      <p><strong>Price:</strong> {{ selectedProduct.price }}</p>
+                      <p><strong>Description:</strong> {{ selectedProduct.description }}</p>
+                      
+                    </div>
+                  </div>
+                  <!-- Place order form to get the user details -->
+                  <div class="order-form">
+                    <form [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+                      
+                      <h2 style="color: rgb(0, 251, 217); font-family:cursive;">Enter your details to Proceed!</h2>
+                      <div class="form-group">
+                        <label class="label-group" for="name">Name<span class="required">*</span></label>
+                        <input type="text" id="enterName" formControlName="name" required placeholder="Enter your name">
+                        <div *ngIf="orderForm.get('name')?.invalid && orderForm.get('name')?.touched" class="error-message">
+                          <span *ngIf="orderForm.get('name')?.hasError('required')">Name is required.</span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="enterDate">Order Date<span class="required">*</span></label>
+                        <input type="date" id="enterDate" formControlName="enterDate" required placeholder="Enter the Date">
+                        <div *ngIf="orderForm.get('enterDate')?.invalid && orderForm.get('enterDate')?.touched" class="error-message">
+                          <span *ngIf="orderForm.get('enterDate')?.hasError('required')">Date is required.</span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="enterAddress">Address<span class="required">*</span></label>
+                        <input type="text" id="enterAddress" formControlName="enterAddress" required placeholder="Enter your Address">
+                        <div *ngIf="orderForm.get('enterAddress')?.invalid && orderForm.get('enterAddress')?.touched"
+                          class="error-message">
+                          <span *ngIf="orderForm.get('enterAddress')?.hasError('required')">Address is required.</span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="enterPhoneNo">Phone Number<span class="required">*</span></label>
+                        <input type="tel" id="enterPhoneNo" formControlName="enterPhoneNo" required placeholder="Enter your phone number">
+                        <div *ngIf="orderForm.get('enterPhoneNo')?.invalid && orderForm.get('enterPhoneNo')?.touched"
+                          class="error-message">
+                          <span *ngIf="orderForm.get('enterPhoneNo')?.hasError('required')">Phone Number is required.</span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="enterEmail">Email<span class="required">*</span></label>
+                        <input type="email" id="enterEmail" formControlName="enterEmail" required placeholder="Enter your email">
+                        <div *ngIf="orderForm.get('enterEmail')?.invalid && orderForm.get('enterEmail')?.touched" class="error-message">
+                          <span *ngIf="orderForm.get('enterEmail')?.hasError('required')">Email Number is required.</span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="orderPrice">Order Price<span class="required">*</span></label>
+                        <input type="text" id="orderPrice" formControlName="orderPrice" required placeholder="Enter the order price">
+                        <div *ngIf="orderForm.get('orderPrice')?.invalid && orderForm.get('orderPrice')?.touched"
+                          class="error-message">
+                          <span *ngIf="orderForm.get('orderPrice')?.hasError('required')">Order Price Number is required.</span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="giftModel">Gift Model<span class="required">*</span></label>
+                        <input type="text" id="giftModel" formControlName="giftModel" required placeholder="Enter the Gift Model">
+                        <div *ngIf="orderForm.get('giftModel')?.invalid && orderForm.get('giftModel')?.touched"
+                          class="error-message">
+                          <span *ngIf="orderForm.get('giftModel')?.hasError('required')">Gift Model is required.</span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="orderDescription">Order Description</label>
+                        <input type="text" id="orderDescription" formControlName="orderDescription" required
+                          placeholder="Enter the order Description">
+                      </div>
+                      <div class="form-group">
+                        <label for="selectThemeModel">Select the Theme Model<span class="required">*</span></label>
+                        <select id="selectThemeModel" name="selectThemeModel" formControlName="selectThemeModel" required>
+                          <option value="Default">Default</option>
+                          <option value="PhotoDesign">Photo design 200</option>
+                          <option value="Pattern">Pattern 100</option>
+                          <option value="FacePattern">Face Pattern 150</option>
+                          <option value="FrameDesign">Frame design 300</option>
+                        </select>
+                        <div *ngIf="orderForm.get('selectThemeModel')?.invalid && orderForm.get('selectThemeModel')?.touched"
+                          class="error-message">
+                          <span *ngIf="orderForm.get('selectThemeModel')?.hasError('required')">Please select a Theme model!</span>
+                        </div>
+                      </div>
+                
+                      <div class="placeOrder-button">
+                        <button type="submit">Place Order</button>
+                      </div>
+                    
+                    </form>
+                  </div>
+                </div>
+                
+                

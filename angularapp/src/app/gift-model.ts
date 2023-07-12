@@ -3,6 +3,12 @@ export class GiftModel {
     giftName:string;
     giftImageUrl:string;
     giftDetails:string;
-    giftPrice:string;
-    giftQuantity:string
+    giftPrice:number;
+    giftQuantity:string;
+    occassion:string;
+    rating:number;
+    recipient:string;
+    sold:number;
+    dateTime:Date;
+    discountPrice:number;
 }

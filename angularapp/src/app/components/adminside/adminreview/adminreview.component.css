@@ -1,0 +1,41 @@
+.searchbar{
+  float:right;
+  width:25%;
+  margin:auto;
+}
+.navbar{
+  background-color: #D4AF37;
+}
+ngb-rating {
+  color: #020202;
+  font-size: 20px;
+}
+#divi{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top:10px;
+}
+.table-head{
+  background-color: #D4AF37;
+  color: white;
+}
+.backflow {
+  background-color: transparent;
+}
+.form-control::placeholder {
+  font-family: FontAwesome;
+  box-shadow: 0 10px 40px 0 #D4AF37;
+}
+.form-control{
+  font-size: 18px;
+  padding: 0px 6px;
+  border-style: inherit ;
+}
+.text-center{
+  color: #D4AF37;
+  display: flex;
+  justify-content: center;
+  margin:-15px 0 ;
+}
+
+  

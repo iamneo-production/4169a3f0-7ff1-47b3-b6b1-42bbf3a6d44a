@@ -1,25 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { RouterTestingModule } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { AdminHomePageComponent } from './adminhomepage.component';
 
-import { AdminhomepageComponent } from './adminhomepage.component';
-
-describe('AdminhomepageComponent', () => {
-  let component: AdminhomepageComponent;
-  let fixture: ComponentFixture<AdminhomepageComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AdminhomepageComponent ]
-    })
-    .compileComponents();
-  });
-
+describe('AdminHomePageComponent', () => {
+  let component: AdminHomePageComponent;
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule], 
+    providers: [AdminHomePageComponent]
+  }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminhomepageComponent);
+    const fixture = TestBed.createComponent(AdminHomePageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
-
-  it('should create', () => {
+  it('FE_adminHomePageTest', () => {
     expect(component).toBeTruthy();
   });
 });
