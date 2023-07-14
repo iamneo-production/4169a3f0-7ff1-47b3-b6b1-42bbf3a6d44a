@@ -54,8 +54,11 @@
       padding: 20px;
     }
     img{
-        max-width: 30%;
-      height: 30%;
+
+     
+        max-width: 70%;
+      height: 70%;
+
     }
     .navbar{
      /* background-color: #008080;*/
@@ -111,7 +114,7 @@
         <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
         <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
         <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-        <a class="navbar-brand" href="../admin">Logout</a>
+        <a class="navbar-brand" href="../logout">Logout</a>
   </nav>
     </div>
   </header><br>
@@ -129,6 +132,11 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <!--<th>Occassion</th>
+                    <th>Recipient</th>-->
+                    <th>Sold</th>
+                    <th>Date-Time</th>
+                    <th>Discount Price</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -139,6 +147,12 @@
                                   <td>{{item.giftName}}</td>
                                   <td><span>{{item.giftPrice}}</span></td>
                                   <td><span>{{item.giftQuantity}}</span></td>
+                                 <!---- <td><span>{{item.occassion}}</span></td>-->
+                                  <!--<td><span>{{item.rating}}</span></td>-->
+                                  <!--<td><span>{{item.recipient}}</span></td>-->
+                                  <td><span>{{item.sold}}</span></td>
+                                  <td><span>{{item.dateTime}}</span></td>
+                                  <td><span>{{item.discountPrice}}</span></td>
                                 <td> <button (click)="updateRow(item.giftId)" ><i class="fa fa-edit" id=editGift{{i+1}}></i></button></td>    
                             <td> <button  (click)="deleteRow(item.giftId)"><i class="fa fa-trash-o" id=deleteGift{{i+1}}></i></button></td>
                            
@@ -174,9 +188,37 @@
               </div>
 
               <div class="mb-3">
-                <label for="email" class="form-label">Gift Details:</label>
-                
+                <label for="email" class="form-label">Gift Details:</label>       
  <input type="text" id="addGiftDetails" placeholder="enter the gift details" [(ngModel)]="gifts.giftDetails" name="detail"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Occassion:</label>       
+ <input type="text" id="addGiftDetails" placeholder="enter the Occassion" [(ngModel)]="gifts.occassion" name="occassion"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Recipient:</label>       
+ <input type="text" id="addGiftDetails" placeholder="enter the Receipient" [(ngModel)]="gifts.recipient" name="recipient"class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Gift Rating:</label>       
+ <input type="text" id="addGiftDetails" placeholder="enter the gift rating" [(ngModel)]="gifts.rating" name="rating"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Gift Items Sold:</label>       
+ <input type="text" id="addGiftDetails" placeholder="Items Sold" [(ngModel)]="gifts.sold" name="sold"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Gift Date:</label>       
+ <input type="datetime-local" id="addGiftDetails" placeholder="enter the gift date" [(ngModel)]="gifts.dateTime" name="datetime"class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Discount Price:</label>       
+ <input type="text" id="addGiftDetails" placeholder="Discount Price" [(ngModel)]="gifts.discountPrice" name="discount"class="form-control">
               </div>
 
              
