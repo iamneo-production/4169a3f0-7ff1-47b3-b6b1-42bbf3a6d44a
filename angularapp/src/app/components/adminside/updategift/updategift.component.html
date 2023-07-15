@@ -8,7 +8,7 @@
       <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
       <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
       <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-      <a class="navbar-brand" href="../admin">Logout</a>
+      <a class="navbar-brand" href="../logout">Logout</a>
 </nav>
     </div>
   </header><br>
@@ -80,6 +80,35 @@
               <label for="email" class="form-label">Gift Details:</label>
               
   <input type="text" id="editGiftDetails" placeholder="enter the gift details" [(ngModel)]="gifts.giftDetails" name="detail"class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Occassion:</label>       
+<input type="text" id="addGiftDetails" placeholder="enter the Occassion" [(ngModel)]="gifts.occassion" name="occassion"class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Recipient:</label>       
+<input type="text" id="addGiftDetails" placeholder="enter the Receipient" [(ngModel)]="gifts.recipient" name="recipient"class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Gift Rating:</label>       
+<input type="text" id="addGiftDetails" placeholder="enter the gift rating" [(ngModel)]="gifts.rating" name="rating"class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Gift Items Sold:</label>       
+<input type="text" id="addGiftDetails" placeholder="Items Sold" [(ngModel)]="gifts.sold" name="sold"class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Gift Date:</label>       
+<input type="datetime-local" id="addGiftDetails" placeholder="enter the gift date" [(ngModel)]="gifts.dateTime" name="datetime"class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Discount Price:</label>       
+<input type="text" id="addGiftDetails" placeholder="Discount Price" [(ngModel)]="gifts.discountPrice" name="discount"class="form-control">
             </div>
   
            
