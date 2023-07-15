@@ -26,6 +26,9 @@ import { StarRatingComponent } from './components/adminside/star-rating/star-rat
 import{ ProductsService} from './products.service';
 import { ViewpageComponent } from './components/customerside/userhomepage/viewpage/viewpage.component';
 import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
+import { PaymentpageComponent } from './components/customerside/paymentpage/paymentpage.component';
+import { CartComponent } from './components/customerside/cart/cart.component';
+import { CustomFilterPipe } from './custom-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { GiftfinderComponent } from './components/customerside/userhomepage/gift
     StarRatingComponent,
     ViewpageComponent,
     GiftfinderComponent,
-   
+    PaymentpageComponent,
+    CartComponent,
+    CustomFilterPipe
   ],
   imports: [
    BrowserModule,

@@ -1,26 +1,31 @@
-<section>
+<section style="background: url('assets/image/user.jpg')no-repeat; 
+background-position: center;
+background-size: cover;
+min-height: 100vh;
+width: 100%;">
     <div class="container">
         <div class="form-box">
-            <form (ngSubmit)="submitForm()" name="Formfill">
+            <form (submit)="registerUser()" name="Formfill">
                 <h2>Register</h2>
                 <p id="result">{{ errorMessage }}</p>
                 <div class="input-box">
-                    <input type="text" name="Username" placeholder="Username" [(ngModel)]="username" (input)="validateUsername()">
+                    <input type="text" id="username" name="Username" placeholder="Username" [(ngModel)]="user.name" (input)="validateUsername()" [ngModelOptions]="{standalone: true}" required>
                 </div>
                 <div class="input-box">
-                    <input type="email" name="Email" placeholder="Email" [(ngModel)]="email" (input)="validateEmail()">
+                    <input type="email" id="email" name="Email" placeholder="Email" [(ngModel)]="user.email" (input)="validateEmail()" [ngModelOptions]="{standalone: true}" required>
                 </div>
                 <div class="input-box">
-                    <input type="number" name="Phnumber" placeholder="Phone Number" [(ngModel)]="phoneNumber" (input)="validatePhoneNumber()">
+                    <input type="number" id="mobileNumber" name="Phnumber" placeholder="Phone Number" [(ngModel)]="user.phonenumber" (input)="validatePhoneNumber()" [ngModelOptions]="{standalone: true}" required>
                 </div>
                 <div class="input-box">
-                    <input type="password" name="Password" placeholder="Password" [(ngModel)]="password" (input)="validatePassword()">
+                    <input type="password" id="password" name="Password" placeholder="Password" [(ngModel)]="user.password" (input)="validatePassword()" [ngModelOptions]="{standalone: true}" required>
                 </div>
                 <div class="input-box">
-                    <input type="password" name="cPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword" (input)="validateConfirmPassword()">
+                    <input type="password" id="confirmPassword" name="cPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword" (input)="validateConfirmPassword()">
                 </div>
                 <div class="button">
-                    <button type="submit" class="btn">Register</button> 
+                    <button type="submit" id="submitButton" class="btn" (click)="register()"[disabled]="">Register</button>
+
                 </div>
                 <div class="group">
                     <span><a href="#">Forget-Password</a></span>
@@ -29,10 +34,11 @@
             </form>
         </div>
     </div>
-    <div class="popup-container" *ngIf="showPopup">
+    <!-- <div class="popup-container" *ngIf="showPopup">
         <div class="popup">
             <p>Registration successful</p>
             <button class="btn-ok" (click)="hidePopup()">OK</button>
         </div>
-    </div>
+    </div> -->
+    <!-- <class="btn-ok" (click)="hidePopup()">Register</button>button  -->
 </section>

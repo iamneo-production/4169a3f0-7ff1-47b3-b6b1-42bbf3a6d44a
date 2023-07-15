@@ -1,4 +1,5 @@
 package com.examly.springapp.controller;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ import com.examly.springapp.exception.ResourceNotFoundException;
 
 import com.examly.springapp.model.GiftModel;
 
-@CrossOrigin(origins = "https://8081-adafccfdcacfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-daadfdafdcfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 @RequestMapping("/admin")
 public class GiftController {
@@ -52,14 +53,22 @@ public ResponseEntity<String> editGift(@PathVariable int giftId,@RequestBody Gif
     // Use the 'updatedGift' parameter to access the updated details sent in the request body
 
     // Example implementation:
-    GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
+   // GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
    
+    GiftModel existingGift = gift.findById(giftId).orElseThrow(()->new ResourceNotFoundException("no gift with this id: "+giftId));
+    
     existingGift.setGiftId(g.getGiftId());
     existingGift.setGiftName(g.getGiftName());
     existingGift.setGiftImageUrl(g.getGiftImageUrl());
     existingGift.setGiftDetails(g.getGiftDetails());
     existingGift.setGiftPrice(g.getGiftPrice());
     existingGift.setGiftQuantity(g.getGiftQuantity());
+    existingGift.setOccassion(g.getOccassion());
+    existingGift.setRating(g.getRating());
+    existingGift.setRecipient(g.getRecipient());
+    existingGift.setSold(g.getSold());
+    existingGift.setDateTime(g.getDateTime());
+    existingGift.setDiscountPrice(g.getDiscountPrice());
     GiftModel updated = gift.save(existingGift);
     ResponseEntity.ok(updated);
     return ResponseEntity.ok("Gift edited");

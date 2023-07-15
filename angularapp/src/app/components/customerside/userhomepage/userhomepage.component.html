@@ -112,7 +112,7 @@ choose and order the best possible gifts for their beloved ones. -->
       <p><span [style.color]="product.stock < 10 ? 'red' : 'black'">{{ product.stock }}</span>  Piece left, Order soon!</p>
     </ng-container>
       <br>
-      <button (click)="addToCart()">Add to Cart</button> 
+      <button (click)="addToCart(product['id'])">Add to Cart</button> 
     </div>
   </section>
 </div>
@@ -143,7 +143,7 @@ choose and order the best possible gifts for their beloved ones. -->
       </ng-container>
       <p>{{ product.dateTime | date }}</p>
       <br>
-      <button (click)="addToCart()">Add to Cart</button> 
+      <button (click)="addToCart(product['id'])">Add to Cart</button> 
     </div>
   </section>
 </div>
@@ -201,7 +201,7 @@ choose and order the best possible gifts for their beloved ones. -->
         <p><span [style.color]="product.stock < 10 ? 'red' : 'inherit'">{{ product.stock }}</span>  Piece left, Order soon!</p>
       </ng-container>
       <br>
-      <button (click)="addToCart()">Add to Cart</button> 
+      <button (click)="addToCart(product['id'])">Add to Cart</button> 
     </div>
   </section>
 </div>
@@ -231,7 +231,7 @@ choose and order the best possible gifts for their beloved ones. -->
       <ng-container *ngIf="product.stock < 10">
         <p><span [style.color]="product.stock < 10 ? 'red' : 'inherit'">{{ product.stock }}</span>  Piece left, Order soon!</p>
       </ng-container>
-      <button (click)="addToCart()">Add to Cart</button> 
+      <button (click)="addToCart(product['id'])">Add to Cart</button> 
     </div>
   </section>
 </div>
