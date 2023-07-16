@@ -5,7 +5,7 @@ export class GiftModel {
     giftDetails:string;
     giftPrice:number;
     giftQuantity:string;
-    occassion:string;
+    occasion:string;
     rating:number;
     recipient:string;
     sold:number;
