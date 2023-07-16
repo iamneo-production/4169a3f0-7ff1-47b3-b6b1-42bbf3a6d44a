@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.examly.springapp.repository.GiftsRepo;
 import com.examly.springapp.exception.ResourceNotFoundException;
+import java.util.List;
 
 import com.examly.springapp.model.GiftModel;
 
-@CrossOrigin(origins = "https://8081-daadfdafdcfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-abaaffbecfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 @RequestMapping("/admin")
 public class GiftController {
@@ -63,7 +66,7 @@ public ResponseEntity<String> editGift(@PathVariable int giftId,@RequestBody Gif
     existingGift.setGiftDetails(g.getGiftDetails());
     existingGift.setGiftPrice(g.getGiftPrice());
     existingGift.setGiftQuantity(g.getGiftQuantity());
-    existingGift.setOccassion(g.getOccassion());
+    existingGift.setOccasion(g.getOccasion());
     existingGift.setRating(g.getRating());
     existingGift.setRecipient(g.getRecipient());
     existingGift.setSold(g.getSold());
@@ -84,5 +87,61 @@ public String deleteGift(@PathVariable int giftId)
 	return "Gift Deleted";
 }
 
+
+
+	@GetMapping("/best-sellers")
+	public List<GiftModel> getBestSellers() {
+		return gift.findTop4ByOrderByRatingDesc();
+	}
+
+	@GetMapping("/new-arrival")
+	public List<GiftModel> getNewestArrivalProducts() {
+		return gift.findTop4ByOrderByDateTimeDesc();
+	}
+
+	@GetMapping("/giftfinder")
+	public List<GiftModel> filterProducts(
+			@RequestParam(required = true) String occasion,
+			@RequestParam(required = true) String recipient,
+			@RequestParam(required = true) Double minPrice,
+			@RequestParam(required = true) Double maxPrice,
+			@RequestParam(required = true) String giftDetails
+	) {
+		return gift.findByOccasionAndRecipientAndGiftPriceBetweenAndGiftDetails(occasion, recipient, minPrice, maxPrice, giftDetails);
+	}
+
+	@GetMapping("/trending")
+	public List<GiftModel> getTrendingItems() {
+		return gift.findTop4ByOrderBySoldDesc();
+	}
+
+	@GetMapping("/fathers-day")
+	public List<GiftModel> getProductsForFathersDay() {
+		return gift.findByOccasion("Fathers day");
+	}
+
+	@GetMapping("/occasions")
+	@ResponseBody
+	public List<String> getDistinctOccasions() {
+		return gift.findDistinctOccasion();
+	}
+
+	@GetMapping("/recipient")
+	@ResponseBody
+	public List<String> getDistinctRecipient() {
+		return gift.findDistinctRecipient();
+	}
+
+	@GetMapping("/filterByOccasion")
+	public List<GiftModel> getProductsByOccasion(@RequestParam("occasion") String occasion) {
+		return gift.findByOccasion(occasion);
+	}
+
+	@GetMapping("/filterByRecipient")
+	public List<GiftModel> getProductsByRecipient(@RequestParam("recipient") String recipient) {
+		return gift.findByRecipient(recipient);
+	}
 }
+
+
 
