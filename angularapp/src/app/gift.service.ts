@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GiftService {
 
-  private baseUrl="https://8080-daadfdafdcfdadebbecffccbcffabaefd.project.examly.io/admin/getGift";
-   private url2="https://8080-daadfdafdcfdadebbecffccbcffabaefd.project.examly.io/admin/addGift";
-   private url3="https://8080-daadfdafdcfdadebbecffccbcffabaefd.project.examly.io/admin/deleteGift";
-   private baseURL="https://8080-daadfdafdcfdadebbecffccbcffabaefd.project.examly.io/admin/editGift";
+  private baseUrl="https://8080-abaaffbecfdadebbecffccbcffabaefd.project.examly.io/admin/getGift";
+   private url2="https://8080-abaaffbecfdadebbecffccbcffabaefd.project.examly.io/admin/addGift";
+   private url3="https://8080-abaaffbecfdadebbecffccbcffabaefd.project.examly.io/admin/deleteGift";
+   private baseURL="https://8080-abaaffbecfdadebbecffccbcffabaefd.project.examly.io/admin/editGift";
   constructor(private httpClient: HttpClient) { }
   getAllGifts(): Observable<GiftModel[]>{
     return this.httpClient.get<GiftModel[]>(`${this.baseUrl}`);
