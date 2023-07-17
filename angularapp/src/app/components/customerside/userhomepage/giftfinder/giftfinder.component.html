@@ -2,74 +2,77 @@
     1. OCCASION, 2.RECIPIENT, 3.PRICE RANGE AND 4. GIFT TYPE 
     AND FETCHS THE APPROPRIATE MATCHING GIFT FOR THE USER -->
 
-<div class="finder">
-    <h2>Still confused? Try our</h2>
-      <h1>Smart Gift Finder</h1>
+    <div class="finder">
+      <h2>Still confused? Try our</h2>
+        <h1>Smart Gift Finder</h1>
+        
+        <label for="occasion">Occasion:</label>
+        <select id="occasion" [(ngModel)]="selectedOccasion">
+          <option value="">All</option>
+          <option value="Personal Occasions">Personal Occasions</option>
+          <option value="Birthday">Birthday</option>
+          <option value="anniversary">Anniversary</option>
+          <option value="wedding">wedding</option>
+          <option value="House Warming">House Warming</option>
+          <option value="Baby Shower">Baby Shower</option>
+          <option value="Farewell">Farewell</option>
+          <option value="Festival">Festival</option>
+          <option value="raksa bandhan">raksha bandhan</option>
+          <!-- Add more occasion options here -->
+        </select>
+        
+        <label for="receipt">Receipt:</label>
+        <select id="receipt" [(ngModel)]="selectedReceipt">
+          <option value="">All</option>
+          <option value="Husband">Husband</option>
+          <option value="Father">Father</option>
+          <option value="Male Friend">Friend</option>
+          <option value="Son">Son</option>
+          <option value="Brother">Brother</option>
+          <option value="Wife">Wife</option>
+          <option value="Mother">Mother</option>
+          <option value="Sister">Sister</option>
+        </select>
+        
+        <label for="price-range">Price Range:</label>
+        <select id="price-range" [(ngModel)]="selectedPriceRange">
+          <option value="">All</option>
+          <option value="0-100">Below 100</option>
+          <option value="100-250">100 to 250</option>
+          <option value="250-500">250 to 500</option>
+          <option value="500-750">500 to 750</option>
+          <option value="750-1000">750 to 1000</option>
+          <option value="1000-2500">1000 to 2500</option>
+          <option value="2500-5000">2500 to 5000</option>
+          <option value="5000-99999">5000 and above</option>
+          <!-- Add more price range options here -->
+        </select>
+        
+        <label for="gift-type">Gift Type:</label>
+        <select id="gift-type" [(ngModel)]="selectedGiftType">
+          <option value="">All</option>
+          <option value="Personalised Gifts">Personalised Gifts</option>
+          <option value="Caricature">Caricature</option>
+          <option value="Miniature">Miniature</option>
+          <option value="Photo Frames">Photo Frames</option>
+          <option value="3D Lamps">3D Lamps</option>
+          <option value="Clocks">Clocks</option>
+          <option value="Wooden Plaques">Wooden Plaques</option>
+          <option value="Photomug">Photomug</option>
+          <option value="customized Mugs">customized Mugs</option>
+          <option value="Chocolates">Chocolates</option>
+          <option value="Cakes">Cakes</option>
+          <option value="Flowers">Flowers</option>
+          <option value="Home Decor">Home Decor</option>
+          <option value="Wall Art">Wall Art</option>
+          <option value="Gift Hamper">Gift Hamper</option>
+          <!-- Add more gift type options here -->
+        </select>
+        
+        <button (click)="search()">Search</button>
+      </div>
       
-      <label for="occasion">Occasion:</label>
-      <select id="occasion" [(ngModel)]="selectedOccasion">
-        <option value="">All</option>
-        <option value="Personal Occasions">Personal Occasions</option>
-        <option value="Birthday">Birthday</option>
-        <option value="anniversary">Anniversary</option>
-        <option value="wedding">wedding</option>
-        <option value="House Warming">House Warming</option>
-        <option value="Baby Shower">Baby Shower</option>
-        <option value="Farewell">Farewell</option>
-        <option value="Festival">Festival</option>
-        <option value="Corporate">Corporate</option>
-      </select>
-      
-      <label for="recipient">recipient</label>
-      <select id="receipt" [(ngModel)]="selectedReceipt">
-        <option value="">All</option>
-        <option value="Husband">Husband</option>
-        <option value="Father">Father</option>
-        <option value="Male Friend">Male Friend</option>
-        <option value="Son">Son</option>
-        <option value="Brother">Brother</option>
-        <option value="Wife">Wife</option>
-        <option value="Mother">Mother</option>
-        <option value="Female friends">Female friends</option>
-        <option value="Sister">Sister</option>
-      </select>
-      
-      <label for="price-range">Price Range:</label>
-      <select id="price-range" [(ngModel)]="selectedPriceRange">
-        <option value="">All</option>
-        <option value="0-100">Below 100</option>
-        <option value="100-250">100 to 250</option>
-        <option value="250-500">250 to 500</option>
-        <option value="500-750">500 to 750</option>
-        <option value="750-1000">750 to 1000</option>
-        <option value="1000-2500">1000 to 2500</option>
-        <option value="2500-5000">2500 to 5000</option>
-        <option value="5000-99999">5000 and above</option>
-      </select>
-      
-      <label for="gift-type">Gift Type:</label>
-      <select id="gift-type" [(ngModel)]="selectedGiftType">
-        <option value="">All</option>
-        <option value="Personalised Gifts">Personalised Gifts</option>
-        <option value="Caricature">Caricature</option>
-        <option value="Miniature">Miniature</option>
-        <option value="Photo Frames">Photo Frames</option>
-        <option value="3D Lamps">3D Lamps</option>
-        <option value="Clocks">Clocks</option>
-        <option value="Wooden Plaques">Wooden Plaques</option>
-        <option value="Photo collage">Photo collage</option>
-        <option value="customized Mugs">customized Mugs</option>
-        <option value="Chocolates">Chocolates</option>
-        <option value="Cakes">Cakes</option>
-        <option value="Flowers">Flowers</option>
-        <option value="Home Decor">Home Decor</option>
-        <option value="Wall Art">Wall Art</option>
-        <option value="Gift Hamper">Gift Hamper</option>
-      </select>
-      
-      <button (click)="search()">Search</button>
-    </div>
+    
     
   
   
-
