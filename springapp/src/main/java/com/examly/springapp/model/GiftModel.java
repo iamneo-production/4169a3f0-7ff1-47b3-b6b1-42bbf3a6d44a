@@ -23,26 +23,26 @@ private String giftName;
 private String GiftImageUrl;
 private String giftDetails;
 
-private Integer giftPrice;
-private Integer giftQuantity;
-private String occassion;
-private Integer rating;
+private double giftPrice;
+private int giftQuantity;
+private String occasion;
+private int rating;
 private String recipient;
-private Integer sold;
+private int sold;
 private LocalDateTime dateTime;
-private Double discountPrice;
+private double discountPrice;
 
-public String getOccassion() {
-	return occassion;
+public String getOccasion() {
+	return occasion;
 }
-public void setOccassion(String occassion) {
-	this.occassion = occassion;
+public void setOccasion(String occasion) {
+	this.occasion = occasion;
 }
 
-public Integer getRating() {
+public int getRating() {
 	return rating;
 }
-public void setRating(Integer rating) {
+public void setRating(int rating) {
 
 	this.rating = rating;
 }
@@ -53,10 +53,10 @@ public void setRecipient(String recipient) {
 	this.recipient = recipient;
 }
 
-public Integer getSold() {
+public int getSold() {
 	return sold;
 }
-public void setSold(Integer sold) {
+public void setSold(int sold) {
 
 	this.sold = sold;
 }
@@ -68,20 +68,20 @@ public void setDateTime(LocalDateTime dateTime) {
 	this.dateTime = dateTime;
 }
 
-public Double getDiscountPrice() {
+public double getDiscountPrice() {
 	return discountPrice;
 }
-public void setDiscountPrice(Double discountPrice) {
+public void setDiscountPrice(double discountPrice) {
 
 	this.discountPrice = discountPrice;
 }
 
 
 
-public Integer getGiftId() {
+public int getGiftId() {
 	return giftId;
 }
-public void setGiftId(Integer giftId) {
+public void setGiftId(int giftId) {
 
 	this.giftId = giftId;
 }
@@ -104,16 +104,16 @@ public void setGiftDetails(String giftDetails) {
 	this.giftDetails = giftDetails;
 }
 
-public Integer getGiftPrice() {
+public double getGiftPrice() {
 	return giftPrice;
 }
-public void setGiftPrice(Integer giftPrice) {
+public void setGiftPrice(double giftPrice) {
 	this.giftPrice = giftPrice;
 }
-public Integer getGiftQuantity() {
+public int getGiftQuantity() {
 	return giftQuantity;
 }
-public void setGiftQuantity(Integer giftQuantity) {
+public void setGiftQuantity(int giftQuantity) {
 
 	this.giftQuantity = giftQuantity;
 }
