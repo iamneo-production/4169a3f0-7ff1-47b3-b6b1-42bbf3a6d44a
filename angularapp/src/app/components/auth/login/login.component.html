@@ -17,23 +17,24 @@ background-size: cover;">
       </div>
     <div class="form-box">
         <div class="form-value">
-            <form action="">
+            <form (submit)="loginUser()" name="LoginForm">
                 <h2>Login</h2>
+                <p id="result">{{ errorMessage }}</p>
                 <div class="inputbox">
-                    <input type="email" required>
+                    <input type="email" [(ngModel)]="loginData.email" name="email" [ngModelOptions]="{standalone: true}" required>
                     <label for="">Email</label>
                 </div>
                 <div class="inputbox">
-                    <input type="password" required>
+                    <input type="password" [(ngModel)]="loginData.password" name="password" [ngModelOptions]="{standalone: true}" required>
                     <label for="">Password</label>
                 </div>
 
-                <div class="forget">
+                <!-- <div class="forget">
                     <label for=""><input type="checkbox">Remember Me &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Forget Pssword</a></label>
                     
         
-                </div>
-                <button><a [routerLink]="['/userhomepage']">Log in</a></button>
+                </div> -->
+                <button type="submit">Log in</button>
                 <div class="register">
                     <p>Don't have an account? <a [routerLink]="['/signup']">Register</a></p>
                 </div>

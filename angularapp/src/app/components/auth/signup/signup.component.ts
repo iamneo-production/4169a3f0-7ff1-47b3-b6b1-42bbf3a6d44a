@@ -62,7 +62,7 @@ export class SignupComponent implements OnInit {
   }
 
   validateConfirmPassword() {
-    if (this.confirmPassword !== this.password) {
+    if (this.confirmPassword !== this.user.password) {
       this.errorMessage = "Passwords don't match";
     } else {
       this.errorMessage = '';
