@@ -8,8 +8,8 @@ import { Customer } from './customer';
 })
 export class CustomerService {
 
-  private basURL = "https://8080-abaaffbecfdadebbecffccbcffabaefd.project.examly.io/admin/getreview";
-  private url2="https://8080-abaaffbecfdadebbecffccbcffabaefd.project.examly.io/user/addreview";
+  private basURL = "https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/getreview";
+  private url2="https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/user/addreview";
   constructor(private httpClient: HttpClient) { }
    
   getCustomerList(): Observable<Customer[]>{
