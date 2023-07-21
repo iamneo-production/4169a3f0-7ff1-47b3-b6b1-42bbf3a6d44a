@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GiftModel } from 'src/app/gift-model';
 import { GiftService } from 'src/app/gift.service';
@@ -8,13 +8,19 @@ import { GiftService } from 'src/app/gift.service';
   templateUrl: './addgifts.component.html',
   styleUrls: ['./addgifts.component.css']
 })
-export class AddgiftsComponent implements OnInit {
+export class AddgiftsComponent {
   listdata:GiftModel[]
   name:any;
   price:any;
   image:any;
   quantity:any;
   details:any;
+  occasion:any;
+  rating:any;
+  sold:any;
+  datetime:any;
+  discount:any;
+  recipient:any;
   gifts:GiftModel=new GiftModel();
 
   constructor( private giftservice :GiftService,private router:Router){}
@@ -57,5 +63,4 @@ export class AddgiftsComponent implements OnInit {
     console.log(id);
     this.router.navigate(['update', id]);
   }
-
 }
