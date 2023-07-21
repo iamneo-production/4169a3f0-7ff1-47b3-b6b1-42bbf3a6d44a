@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './giftfinder.component.html',
   styleUrls: ['./giftfinder.component.css']
 })
-export class GiftfinderComponent implements OnInit {
+export class GiftfinderComponent {
 
+  selectedRating: any;
 
   constructor(private router: Router) { 
     
@@ -16,25 +17,23 @@ export class GiftfinderComponent implements OnInit {
   selectedReceipt: string = '';
   selectedPriceRange: string = '';
   selectedGiftType: string = '';
-  selectedRating: any;
-
-
-  ngOnInit(): void {
-  }
-
-  //navigating to viewpage and sending the selected users choice as queryparams 
 
   search(): void {
+
+      const [min, max] = this.selectedPriceRange.split('-').map(Number);
+
     const queryParams = {
       occasion: this.selectedOccasion,
       recipient: this.selectedReceipt,
-      price: this.selectedPriceRange.toString(),
-      giftType: this.selectedGiftType,
+      minPrice:min,
+      maxPrice:max,
+      gifttype: this.selectedGiftType,
       type:'giftfinder'
     };
 
     this.router.navigate(['/viewpage'], { queryParams });
   }
+
 
 }
 
