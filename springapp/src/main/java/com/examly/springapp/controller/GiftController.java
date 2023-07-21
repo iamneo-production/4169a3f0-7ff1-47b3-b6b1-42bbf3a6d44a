@@ -26,7 +26,9 @@ import java.util.Map;
 
 import com.examly.springapp.model.GiftModel;
 
+
 @CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
+
 @RestController
 @RequestMapping("/admin")
 public class GiftController {
