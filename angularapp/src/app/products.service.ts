@@ -28,6 +28,6 @@ export class ProductsService {
   }
 
   removeFromCart(productId: number): Observable<any> {
-    return this.http.delete(`https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io//user/order/deleteOrder/${productId}`);
+    return this.http.delete(`https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/order/deleteOrder/${productId}`);
   }
 }
