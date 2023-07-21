@@ -63,4 +63,14 @@ public class OrderController {
         orderRepo.deleteById(orderId);
         return "Order Deleted Successfully " + orderId;
     }
+    @GetMapping("/admin/orders")
+	public List<OrderModel> viewOrder(){
+		return orderRepo.findAll();
+	}
+	@GetMapping("/admin/orders/{orderId}")
+	public ResponseEntity<OrderModel> getOrderById(@PathVariable int orderId)
+	{
+		OrderModel e = orderRepo.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
+		return ResponseEntity.ok(e);
+	}
 }
