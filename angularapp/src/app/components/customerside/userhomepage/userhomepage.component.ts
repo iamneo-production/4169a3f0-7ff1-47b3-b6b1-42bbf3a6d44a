@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Product';
-import { ProductsService } from 'src/app/products.service';
 
 @Component({
   selector: 'app-userhomepage',
@@ -9,126 +9,140 @@ import { ProductsService } from 'src/app/products.service';
   styleUrls: ['./userhomepage.component.css']
 })
 export class UserhomepageComponent implements OnInit {
-  //Required array declarations
-  products: any[]=[];
-  bestSellers: any[] = [];
-  trending: any[] = [];
-  topNewArrivals: Product[] = [];
-  occasionProducts: Product[] = [];
-  
+  bestSellers: Product[];
+  topNewArrivals: Product[];
+  trendingItems: Product[];
+  fathersDayProducts: Product[];
+  distinctOccasions: String[];
+  distinctRecipient:String[];
+  // i:number=1;
 
- //Injecting product service and Router to userhompage component
-  constructor(private router: Router,private productsService: ProductsService) { } 
-  
+  constructor(private router:Router,private http: HttpClient) { }
 
   ngOnInit(): void {
-   //Fetch list of products and assign to products property of current component
-    this.getProducts(); 
-   // calling the methods defined below in the current component
-    this.findBestSellers(); 
-    this.getTopNewArrivals();
-    this.trendingGifts();
-    this.getOccasionProducts('Mothers Day');
     
-  }
-  
-  getProducts() {
-    this.productsService.getProducts().subscribe(
-      (products: Product[]) => {
-        this.products = products;
-      },
-      (error: any) => {
-        console.log('Error retrieving products:', error);
-      }
-    );
+    this.getBestSellers();
+    this.loadNewestArrivalProducts();
+    this.fetchTrendingItems();
+    this.getFathersDayProducts();
+    this.getDistinctOccasions();
+    this.getDistinctRecipient();
   }
 
-  //To naviagte to placeorder page on clicking addtocart
+  getImageUrlOccasion(occasion: string): string {
+    const imageUrlMap: { [key: string]: string } = {
+      'Birthday': 'https://getwallpapers.com/wallpaper/full/9/b/5/282243.jpg',
+      'wedding': 'https://getwallpapers.com/wallpaper/full/2/3/f/1128636-amazing-hd-wedding-backgrounds-2160x1440.jpg',
+      'Aniversary': 'https://wallpapercave.com/wp/v5rXPgi.jpg',
+      'Baby shower': 'https://neolittle.com/wp-content/uploads/2019/12/Best-Places-to-Throw-a-Baby-Shower-15-BEST-Original-Places-In-2020-scaled.jpg',
+      'House warming': 'https://i.ytimg.com/vi/4FIG06qZ0as/maxresdefault.jpg',
+      'raksha bandhan': 'https://fthmb.tqn.com/JN7H6NErzzHMM8xb0Iwq1IppNVU=/2122x1415/filters:fill(auto,1)/GettyImages-109378462-56a484113df78cf77282cc34.jpg',
+      'Fathers day': 'https://im.indiatimes.in/content/2023/Jun/happy-fathers-day-cards4_648e0e6579551.jpg?w=725&h=527&cc=1'
+    };
+
+    return imageUrlMap[occasion];
+  }
+
+  getImageUrlRecipient(recipient: string): string {
+    const imageUrlMap: { [key: string]: string } = {
+      'Husband': 'https://crafterscupboard.com.au/image/cache/catalog/Stock/A2Z%20Scraplets/Husband%20Script%20Word-228x228.jpg',
+      'Father': 'https://cdn11.bigcommerce.com/s-m28of/images/stencil/500x659/products/1083/3969/weldedwordfather-bold__40494.1577479135.png?c=2',
+      'Brother': 'https://cdn.scrapbook.com/products/cache/SBC_unp-8013_0.jpg',
+      'Wife': 'https://cdn10.bigcommerce.com/s-7fcgcq/products/4455/images/1306/3235-Wife__85427.1444427248.1280.1280.JPG?c=2',
+      'Mother': 'https://static.vecteezy.com/system/resources/previews/000/370/036/non_2x/floral-summer-text-mom-vector-illustration-hand-drawn-capital-uppercase-with-flowers-and-leaves-and-white-calligraphy-letters-on-red-background-for-mother-s-day.jpg',
+      'Friend': 'https://cdn1.vectorstock.com/i/1000x1000/86/75/friend-word-text-with-handwritten-rainbow-vibrant-vector-23928675.jpg',
+      'Sister': 'https://i.pinimg.com/236x/60/e0/6f/60e06f90964e3545db28e8e9f69df784--sisters-images-the-words.jpg'
+      
+    };
+
+    return imageUrlMap[recipient];
+  }
+
+  navigateToViewPageOccasion(occasion: string): void {
+    this.router.navigate(['/viewpage'], { queryParams: { occasion,type:'occasion'} });
+  }
+
+  navigateToViewPageRecipient(recipient: string): void {
+    this.router.navigate(['/viewpage'], { queryParams: { recipient,type:'recipient'} });
+  }
+
+  getDistinctOccasions(): void {
+    this.http.get<String[]>('https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/occasions')
+      .subscribe(occasions => {
+        this.distinctOccasions = occasions;
+        });
+      
+  }
+
+  getDistinctRecipient(): void {
+    this.http.get<String[]>('https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/recipient')
+      .subscribe(recipient => {
+        this.distinctRecipient = recipient;
+        });
+      
+  }
+
   addToCart(productId: number) {
     this.router.navigate(['/customerorder', productId]);
   }
 
-
-  // To get an array of size equal to given product rating (filled stars)
   getFilledStars(rating: number): number[] {
-    return Array(rating).fill(0);
+    return Array(Math.floor(rating)).fill(0);
   }
 
-  //To get an array of size equal to (5-rating) unfilled stars
   getEmptyStars(rating: number): number[] {
-    return Array(5 - rating).fill(0);
-  }
-
-  // navigating to viewpage and sending occassion details in query param for occasion scroller
-  navigateToViewPage(occasion: string): void {
-    this.router.navigate(['/viewpage'], { queryParams: { occasion,type:'occasion'} });
+    return Array(5 - Math.floor(rating)).fill(0);
   }
 
 
-// Fetching products with best ratings
-  findBestSellers(): void {
-    let highestRating = -1;
-    for (const product of this.products) {
-      if (product.rating > highestRating) {
-        highestRating = product.rating;
-        this.bestSellers = [product];
-      } else if (product.rating === highestRating) {
-        this.bestSellers.push(product);
+  getBestSellers() {
+    const url = 'https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/best-sellers';
+    this.http.get<Product[]>(url)
+      .subscribe((products: Product[]) => {
+        this.bestSellers = products;
+      });
+      console.log(this.bestSellers);
+  }
+
+  loadNewestArrivalProducts() {
+    const url = 'https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/new-arrival'; 
+
+    this.http.get<Product[]>(url).subscribe(
+      products => {
+        this.topNewArrivals = products;
+      },
+      error => {
+        console.log('Error retrieving products: ', error);
       }
-    }
-  } 
-
-  // Fetching new arrivals based on date and time
-  getTopNewArrivals(): void {
-    // Sort the products array based on the dateTime field in descending order
-    this.products.sort((a, b) => b.dateTime.getTime() - a.dateTime.getTime());
-
-    // Get the top 4 new arrival products
-    this.topNewArrivals = this.products.slice(0, 4);
+    );
+    console.log(this.topNewArrivals);
   }
-
-
-
-  //Navigating to viewpage and passing recipient details on queryparam for relation scroller
-  MoveToViewPage(recipient: string): void {
-    this.router.navigate(['/viewpage'], { queryParams: { recipient,type:'recipient'} });
+  fetchTrendingItems() {
+    this.http.get<Product[]>('https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/trending').subscribe(
+      (response) => {
+        this.trendingItems = response;
+      },
+      (error) => {
+        console.error('Error fetching trending items:', error);
+      }
+    );
   }
+  getFathersDayProducts() {
 
-
-
-  //To fetch the most sold items in products array
-  trendingGifts(): void {
-    this.trending = [];
-  
-    // Sort products by sold count in descending order
-    this.products.sort((a, b) => b.sold - a.sold);
-  
-    // Get the top 4 most sold items
-    const topItems = this.products.slice(0, 4);
-  
-    // Add the top items to the trending array
-    for (const product of topItems) {
-      this.trending.push(product);
-    }
+    this.http.get<any[]>('https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin/fathers-day').subscribe(
+        (response) => {
+          this.fathersDayProducts = response;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
-
-
-
-  //filter occassion based on spl occasion 
-  getOccasionProducts(occasion: string): void {
-    this.occasionProducts = this.products.filter(product => product.occasion === occasion);
-  }
-
-
-
-  //To calculate discount about for spl occasions offers
-  getDiscountPercentage(originalRate: number, revisedRate?: number ): number {
-    const discount = (originalRate - (revisedRate ?? 0)) / originalRate * 100;
+  getDiscountPercentage(originalRate: number, revisedRate: number): number {
+    const discount = (originalRate - revisedRate) / originalRate * 100;
     return Math.round(discount);
   }
-  
-  
-  
-  
 
 }
+
+
