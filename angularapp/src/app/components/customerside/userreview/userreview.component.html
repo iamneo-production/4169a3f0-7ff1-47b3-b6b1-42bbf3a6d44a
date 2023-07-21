@@ -1,46 +1,50 @@
 <h1 class="header">Customer Review Page</h1>
 <div class="bg-image">
-  <div class="review-container" >
-      
-      <form [formGroup]=reviewForm>
-        <div class="rating">
-          <label for="rating">Your overall rating</label>
-          <div class="stars">
-            <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="review.rating" required>
-            <label for="star5"></label>
-            <input type="radio" id="star4" name="rating" value="4" [(ngModel)]="review.rating">
-            <label for="star4"></label>
-            <input type="radio" id="star3" name="rating" value="3" [(ngModel)]="review.rating">
-            <label for="star3"></label>
-            <input type="radio" id="star2" name="rating" value="2" [(ngModel)]="review.rating">
-            <label for="star2"></label>
-            <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="review.rating">
-            <label for="star1"></label>
-          </div>
-        </div>
-        
-        <div class="form-group">
-        <div class="review-box">
-          <label for="comment">Your review</label>
-          <textarea id="comment" class="form-control" formControlName="revb" placeholder="Please leave your review" [(ngModel)]="review.comment" required></textarea>
-         
-        </div> 
-        <span class="error" *ngIf="revb?.invalid && revb?.touched">review is required
-        </span>
-       
-        <div>
-        </div>
-          <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="Enter your name" [(ngModel)]="review.name" required>
-        </div>
-        <div>
-          <label for="email">Product Name</label>
-          <input type="email" id="email" placeholder="Enter your product name" [(ngModel)]="review.email" required>
-        </div>
+<div class="review-container">
+<form (ngSubmit)="onSubmit()">
+    <div class="rating" class="form-group">
+        <label>Your overall rating</label>
+        <div class="stars">
             
-        <button type="submit">Submit Review</button>
-        
-      </form>
-    </div>
-  </div>
+            <input type="radio" class="form-control" id="star1" value="5"
+            [(ngModel)] = "customer.ratings" name="rating">
+            <label for="star1"></label>
+            <input type="radio" class="form-control" id="star2" value="4"
+            [(ngModel)] = "customer.ratings" name="rating">
+            <label for="star2"></label>
+            <input type="radio" class="form-control" id="star3" value="3"
+            [(ngModel)] = "customer.ratings" name="rating">
+            <label for="star3"></label>
+            <input type="radio" class="form-control" id="star4" value="2"
+            [(ngModel)] = "customer.ratings" name="rating">
+            <label for="star4"></label>
+            <input type="radio" class="form-control" id="star5" value="1"
+            [(ngModel)] = "customer.ratings" name="rating">
+            <label for="star5"></label>
+        </div>
     
+    </div>
+    <div class="review-box">
+        <label for="comment">Your review</label>
+        <textarea type="text" class="form-control" id="comment" placeholder="Please leave your review"
+            [(ngModel)] = "customer.customerFeedBack" name="review">
+        </textarea>
+    </div>
+    <div>
+        <label for="name">Your Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name"
+            [(ngModel)] = "customer.customerName" name="name">
+    
+    </div>
+    <div>
+        <label for="product">Product Name</label>
+        <input type="text" class="form-control" id="product" placeholder="Enter your product name"
+            [(ngModel)] = "customer.productName" name="product">
+    
+    </div>
+
+    <button class="btn btn-success" type="submit">Submit Review</button>
+   
+</form>
+</div>
+</div>
