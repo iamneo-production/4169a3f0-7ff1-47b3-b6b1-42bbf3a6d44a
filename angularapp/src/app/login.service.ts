@@ -7,7 +7,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/login';
+  private apiUrl = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/login';
 
   constructor(private http: HttpClient) { }
   login(email: string, password: string): Observable<User> {
