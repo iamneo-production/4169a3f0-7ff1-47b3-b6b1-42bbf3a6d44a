@@ -1,0 +1,53 @@
+div {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+select {
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+button {
+  padding: 10px 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+h2{
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+h1{
+  font-size: 35px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 20px;
+}
+
+li {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.finder {
+  padding: 70px;
+  border: 1px solid #4CAF50;
+  background-color: #e09f07;
+}
+

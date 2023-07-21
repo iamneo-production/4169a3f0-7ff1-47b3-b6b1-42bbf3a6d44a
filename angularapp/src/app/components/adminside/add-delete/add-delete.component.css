@@ -1,28 +1,32 @@
+.navbar-custom{
+  background-color: #D4AF37;
+}
+table {
+  border-collapse: collapse;
+  border: 1px solid gray;
+  width: 70%;
+  float: left;
+  margin: 10px;
+  
+}
 .box{
-    width:50%;
-    border:1px solid black;
-    border-radius:25px;
-    padding:0px 20px 20px 20px;
-    margin-left:300px;
-    background-color: #D4AF37;
-  }
-  table {
-    border-collapse: collapse;
-    border: 1px solid gray;
-    width: 60%;
-    float: left;
-    margin: 10px;
-    
-  }
-   tr{
-    background-color:#D4AF37;
-  }
-  .head{
-    background-color: #D4AF37;
-  }
-  .mt-5 box{
-    background-color: #D4AF37;
-  }
-  .conn{
-    background-color: #D4AF37;
-  }
+  width:50%;
+  border:1px solid black;
+  border-radius:25px;
+  padding:0px 20px 20px 20px;
+  margin-left:300px;
+  background-color: #D4AF37;
+}
+.mt-5 box{
+  background-color: #D4AF37;
+}
+tr{
+  background-color:#D4AF37;
+}
+h1{
+text-align: center;
+}
+.cen{
+  text-align: center; 
+  width:400px;
+}
