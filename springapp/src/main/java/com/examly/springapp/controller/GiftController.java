@@ -20,10 +20,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.examly.springapp.repository.GiftsRepo;
 import com.examly.springapp.exception.ResourceNotFoundException;
 import java.util.List;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.examly.springapp.model.GiftModel;
 
-@CrossOrigin(origins = "https://8081-abaaffbecfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 @RequestMapping("/admin")
 public class GiftController {
@@ -141,6 +144,19 @@ public String deleteGift(@PathVariable int giftId)
 	public List<GiftModel> getProductsByRecipient(@RequestParam("recipient") String recipient) {
 		return gift.findByRecipient(recipient);
 	}
+	@GetMapping("/getProductDetails/{giftId}")
+    public Map<String, Object> getProductDetails(@PathVariable int giftId) {
+        GiftModel product = gift.findById(giftId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found for id: " + giftId));
+
+        Map<String, Object> productDetails = new HashMap<>();
+        productDetails.put("image", product.getGiftImageUrl());
+        productDetails.put("name", product.getGiftName());
+        productDetails.put("price", product.getGiftPrice());
+        productDetails.put("description", product.getGiftDescription());
+
+        return productDetails;
+    }
 }
 
 
