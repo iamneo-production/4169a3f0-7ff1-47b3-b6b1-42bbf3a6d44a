@@ -1,102 +1,104 @@
-<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">-->
-<router-outlet></router-outlet>
-<div class="head">
-    
-    <nav class="navbar navbar-dark">
-        <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
-        <a class="navbar-brand fa fa-home" href="../admin">Home</a>
-        <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
-        <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
-        <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
-        <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-        <a class="navbar-brand" href="../admin">Logout</a>
-  </nav>
-    
-    
-      <nav class="navbar navbar-dark bg-light">
-        <div class="w-50">
-          <form class="d-flex">
-            <input class="form-control" type="search" placeholder="Type here to search theme">
-            <button class="btn btn-dark" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
+<div *ngIf="openEdit == false">
+    <nav class="navbar navbar-dark navbar-custom">
+      <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
+      <a class="navbar-brand fa fa-gift" href="../addgifts/" id="adminGifts">Gifts</a>
+      <a class="navbar-brand fa fa-search" href="../add-delete/" id="adminThemes">Themes</a>
+      <a class="navbar-brand fa fa-comments" href="../adminreview/">Customers Feedback</a>
+      <a class="navbar-brand fa fa-shopping-cart" href="../order/" id="adminOrders">Orders</a>
+      <a class="navbar-brand" href="../logout">Logout</a>
+    </nav>
+  
+    <nav class="navbar navbar-dark bg-light">
+      <div class="w-50">
+        <form class="d-flex">
+          <input class="form-control" type="search" [(ngModel)]="searchText" name="searchText"
+            placeholder="Type here to search theme">
+        </form>
+      </div>
+    </nav>
+  
+  
+    <div class="col-md-8 mt-4 mb-2">
+      <table class="table table-borderless">
+  
+        <thead *ngFor="let theme of themeDetails | customFilter:searchText;let i =index" id=themeGrid{{i+1}}>
+          <tr>
+            <th>Theme Name : </th>
+            <td>
+              {{theme.themeName}}
+            </td>
+            <td><button type="button" class="btn btn-dark" (click)="onBtnClick(theme)"><i class="fa fa-edit"
+                  id="editTheme"></i></button></td>
+          </tr>
+  
+          <tr>
+            <th>Theme Price : </th>
+            <td>
+              {{theme.themePrice}}
+            </td>
+            <td><button type="button" class="btn btn-dark" (click)="deleteTheme(theme)"><i class="fa fa-trash-o"
+                  id="deleteTheme"></i></button></td>
+          </tr>
+          <tr>
+            <th>Theme Description : </th>
+            <td>
+              {{theme.themeDescription}}
+            </td>
+            <td>
+  
+            </td>
+          </tr>
+          <p>
+  
+          </p>
+        </thead>
+  
+      </table>
     </div>
-    
-    
-    
-       <div class="col-md-8 mt-4 mb-2">
-        
-        <table class="table table-borderless">
-            <thead *ngFor="let item of listdata;let i =index" id=themeGrid{{i+1}}>
-            
-                <tr><th>Theme Name : </th><td><span>{{item.name}}</span></td><td><button (click)="update(item)"><i class="fa fa-edit" id="editTheme"></i></button></td></tr>
-                <tr><th>Theme Price : </th><td><span>{{item.price}}</span></td><td><button  (click)="deleteRow(item)"><i class="fa fa-trash-o" id="deleteTheme"></i></button></td></tr>
-                 <tr><th>Theme Description : </th><td><span>{{item.description}}</span></td><td></td></tr>
-                 <p>
-    
-                 </p>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        
-    </div>
-    
-    
+  
+  
+  
     <div class="card">
-      <form [formGroup]="userform">
-        
+  
+      <form #addForm="ngForm" (ngSubmit)="add(addForm)">
         <div class="mt-5 box">
-         <div class="form-row">
-             <div class="col-md-12">
-                 <h1 style="align-items:center;">Add Theme</h1>
-                 <div class="form-group mt-3">
-                     <Label>Theme Name</Label>
-                 </div>
-                 <div class="form-row" style="margin-top: -10px;">
-                     <div class="col">
-                         <input type="text" id="enterThemeName" placeholder="Enter the theme name" formControlName="name" class="form-control">
-                     </div>
-                 </div>
-             </div>
-    
-             <div class="col-md-12">
-                 <div class="form-group mt-4" >
-                     <Label>Theme Price</Label>
-                 </div>
-                 <div class="form-row" style="margin-top: -10px;">
-                     <div class="col">
-                         <input type="text" id="enterThemePrice" placeholder="Enter the Theme price" formControlName="price" class="form-control">
-                     </div>
-                 </div>
-             </div>
-    
-             <div class="col-md-12">
-                 <div class="form-group mt-4">
-                     <Label>Description</Label>
-                 </div>
-                 <div class="form-row" style="margin-top: -10px;">
-                     <div class="col">
-                         <input type="text" id="enterThemeDescription" placeholder="Enter the Description" formControlName="description" class="form-control">
-                     </div>
-                 </div>
-             </div>
-    
-             <div class="form-row mt-4">
-                 <div class="col-md-6">
-                     <button type="button" class="btn btn-dark" (click)="add()" id="add">Add</button>
-                  </div>
-                  <div class="col-md-6"> 
-                    <input type="reset" class="btn btn-dark">
-                </div>
-             </div>
-         </div>
+          <div class="form-row">
+            <div class="col-md-12">
+              <div class="form-group mt-3">
+                <h1>Add Theme</h1>
+                <label for="themeName">Theme Name : </label>
+                <input type="text" #themeName (ngModel)="themeName" name="themeName" id="enterThemeName"
+                  placeholder="Enter the theme name" class="form-control">
+              </div>
+            </div>
+  
+            <div class="col-md-12">
+              <div class="form-group mt-2">
+                <label for="themePrice">Theme Price : </label>
+                <input type="number" #themePrice (ngModel)="themePrice" name="themePrice" id="enterThemePrice"
+                  placeholder="Enter the theme price" class="form-control">
+              </div>
+            </div>
+  
+            <div class="col-md-12">
+              <div class="form-group mt-2">
+                <label for="themeDescription">Theme Description : </label>
+                <input type="text" #themeDescription (ngModel)="themeDescription" name="themeDescription"
+                  id="enterThemeDescription" placeholder="Enter the theme Description" class="form-control">
+              </div>
+            </div>
+  
+            <div class="form-group mt-3">
+              <div class="cen">
+                <input type="submit" value="Add" class="btn btn-dark" id="add">
+              </div>
+            </div>
+          </div>
         </div>
-        
-     </form>
+      </form>
+  
     </div>
-   
-    
-    
-    
+  
+  
+  </div>
+  <app-edit *ngIf="openEdit" [themes]="themes" (editedThemes)="updatedTheme($event)"></app-edit>

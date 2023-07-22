@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-interface Review {
-  name: string;
-  email: string;
-  rating: number;
-  comment: string;
-}
+import { Customer } from 'src/app/customer';
+import { CustomerService } from 'src/app/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userreview',
@@ -17,24 +11,26 @@ interface Review {
 
 export class UserreviewComponent implements OnInit{
   
-  review: Review = {
-    name: '',
-    email: '',
-    rating: 0,
-    comment: ''
-  };
-  reviewForm= new FormGroup({
-    revb: new FormControl('',Validators.required)
-    
-    
-  })
+  customer: Customer = new Customer() ;
+  constructor(private customerService: CustomerService, 
+    private router: Router){
 
-  get revb(){
-    return this.reviewForm.get('revb')
   }
-
   ngOnInit(): void {
+      
   }
+  saveCustomer(){
+    this.customerService.createCustomer(this.customer).subscribe(data =>{
+      console.log(data);
+    },
+    error => console.log(error));
+  }
+
+  onSubmit(){
+    console.log(this.customer);
+    this.saveCustomer();
+  }
+
   
 
   }
