@@ -8,7 +8,7 @@ import { User } from './user';
 })
 export class UserService {
 
-  private apiUrl = 'https://8080-bdfcbfadbcfdadebbecffccbcffabaefd.project.examly.io/admin/users';
+  private apiUrl = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/users';
 
 
 

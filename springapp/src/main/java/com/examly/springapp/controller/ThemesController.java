@@ -20,7 +20,7 @@ import com.examly.springapp.repository.ThemesRepository;
 
 
 @RestController
-@CrossOrigin(allowedHeaders="*",origins = "https://8081-abaaffbecfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(allowedHeaders="*",origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
 @RequestMapping("/admin")
 public class ThemesController {
 	@Autowired
