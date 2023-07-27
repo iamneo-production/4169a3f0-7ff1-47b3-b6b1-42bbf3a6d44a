@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GiftModel } from 'src/app/gift-model';
 import { GiftService } from 'src/app/gift.service';
+import { UserService } from 'src/app/user.service';
+
 
 @Component({
   selector: 'app-updategift',
@@ -43,7 +45,7 @@ export class UpdategiftComponent {
     //console.log(this.arr);
     //this.route.navigate(['view-table']);
   }*/
-  constructor( private gift: GiftService,private router:Router,private route:ActivatedRoute){
+  constructor( private gift: GiftService,private router:Router,private route:ActivatedRoute,private userService: UserService){
     
   }
 
@@ -62,5 +64,9 @@ export class UpdategiftComponent {
     });
     var msg=confirm("Updated Successfully")
     this.router.navigate(['addgifts']);
+  }
+  logout(): void {
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }
