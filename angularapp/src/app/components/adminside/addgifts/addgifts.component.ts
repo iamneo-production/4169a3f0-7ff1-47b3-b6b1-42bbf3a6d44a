@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GiftModel } from 'src/app/gift-model';
 import { GiftService } from 'src/app/gift.service';
+import { UserService } from 'src/app/user.service';
+
 
 @Component({
   selector: 'app-addgifts',
@@ -23,7 +25,7 @@ export class AddgiftsComponent {
   recipient:any;
   gifts:GiftModel=new GiftModel();
 
-  constructor( private giftservice :GiftService,private router:Router){}
+  constructor( private giftservice :GiftService,private router:Router,private userService: UserService){}
   ngOnInit():void{
     this.getAllgifts();
     //const urlParams = new URLSearchParams(this.urll);
@@ -62,5 +64,9 @@ export class AddgiftsComponent {
   {
     console.log(id);
     this.router.navigate(['update', id]);
+  }
+  logout(): void {
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }

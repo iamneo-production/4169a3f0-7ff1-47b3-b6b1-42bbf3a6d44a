@@ -1,8 +1,10 @@
 package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.util.Date;
 
 import javax.persistence.Entity;
 
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "giftmodels")
 public class GiftModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int giftId;
@@ -137,5 +140,7 @@ public class GiftModel {
     public void setGiftDescription(String giftDescription) {
         this.giftDescription = "A Memorable gift you can give your loved ones!";
     }
+
+
 
 }
