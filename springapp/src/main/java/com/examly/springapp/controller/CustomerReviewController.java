@@ -20,7 +20,9 @@ import com.examly.springapp.exception.ResourceNotFoundException;
 
 import com.examly.springapp.model.Customer;
 @RestController 
+
 @CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
+
 public class CustomerReviewController {
     
     @Autowired

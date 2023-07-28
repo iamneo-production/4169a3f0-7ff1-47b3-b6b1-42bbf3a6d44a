@@ -15,34 +15,39 @@ export class LoginComponent implements OnInit {
   };
   errorMessage = '';
 
-  constructor(private router: Router, private userService: UserService,private loginService: LoginService) {}
-
-  
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService) {} // Inject AuthService
 
   ngOnInit(): void {
-   }
+    
+  }
+
   navigateToRegister() {
     this.router.navigate(['/signup']);
   }
-  navigateTouserhomepage(){
+
+  navigateTouserhomepage() {
     this.router.navigate(['/userhomepage']);
   }
 
   loginUser(): void {
-    if(this.loginData.email=='admin@gmail.com' && this.loginData.password=='admin'){
-      this.router.navigate(['/admin']);
+    if (this.loginData.email === 'admin@gmail.com' && this.loginData.password === 'admin') {
+      this.userService.setLoggedInStatus(true);
+      this.userService.setUserRole('admin');
+      this.router.navigate(['/admin']); // Redirect to admin page
+    } else {
+      this.loginService.login(this.loginData.email, this.loginData.password)
+        .subscribe(
+          (response) => {
+            // Login successful, navigate to user homepage
+            this.userService.setLoggedInStatus(true);
+            this.userService.setUserRole('user');
+            this.router.navigate(['/userhomepage']);
+          },
+          (error) => {
+            // Login failed, display error message
+            this.errorMessage = 'Incorrect email or password.';
+          }
+        );
     }
-    this.loginService.login(this.loginData.email, this.loginData.password)
-      .subscribe(
-        (response) => {
-          // Login successful, navigate to user homepage
-          this.router.navigate(['/userhomepage']);
-        },
-        (error) => {
-          // Login failed, display error message
-          this.errorMessage = 'Incorrect email or password.';
-        }
-      );
   }
-
 }
