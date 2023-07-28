@@ -34,12 +34,19 @@ public class UserController {
 
     @PutMapping("/{userId}")
     public UserModel editUser(@PathVariable Long userId, @RequestBody UserModel editedUser) {
-        
+        return userRepository.findById(userId)
+                .map(user -> {
+                    user.setName(editedUser.getName());
+                    user.setEmail(editedUser.getEmail());
+                    user.setPhonenumber(editedUser.getPhonenumber());
+                    return userRepository.save(user);
+                })
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
     }
 
     @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable Long userId) {
-        
+        userRepository.deleteById(userId);
     }
 
 }
