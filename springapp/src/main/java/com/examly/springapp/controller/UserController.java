@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "https://8081-bdfcbfadbcfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-bdfdcdfbaecceaceccfdadebbecffccbcffabaefd.project.examly.io")
 
 
 @RestController
@@ -31,4 +31,15 @@ public class UserController {
     public UserModel addUser(@RequestBody UserModel user) {
         return userRepository.save(user);
     }
+
+    @PutMapping("/{userId}")
+    public UserModel editUser(@PathVariable Long userId, @RequestBody UserModel editedUser) {
+        
+    }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        
+    }
+
 }

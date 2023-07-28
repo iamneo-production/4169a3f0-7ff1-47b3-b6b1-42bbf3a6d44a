@@ -16,8 +16,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private userService: UserService,private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   username: string = '';
   email: string = '';
   phoneNumber: string = '';
@@ -86,6 +85,7 @@ export class SignupComponent implements OnInit {
       .subscribe(() => {
         this.user = new User(); // Clear the form after successful registration
       });
+      this.router.navigate(['/login']);
 
   }
 
@@ -94,6 +94,5 @@ export class SignupComponent implements OnInit {
   }
   register(){
     alert('Registered Successful');
-    // this.router.navigate(['/login']);
   }
 }
