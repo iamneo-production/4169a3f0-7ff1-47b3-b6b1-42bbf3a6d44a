@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Customer } from 'src/app/customer';
+import { CustomerService} from 'src/app/customer.service';
+import { UserService } from 'src/app/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminreview',
@@ -6,31 +10,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./adminreview.component.css']
 })
 export class AdminreviewComponent {
-  listdata:any=[
-    {
-      "name":"Harry",
-      "product":"Personalized Mug",
-      "ratings":"4",
-      "feedback":"Very easy to customise product and delivery is also super fast. Loved the entire buying experience"
-    },
-    {
-      "name":"Himawari",
-      "product":"Personalised 3D Moon Lamp",
-      "ratings":"5",
-      "feedback":"Wow what a product ! Loved it!!"
-    },
-    {
-      "name":"Shinchan",
-      "product":"Wooden Photo Frame",
-      "ratings":"4.9",
-      "feedback":"Good and as expected was the same.loved it!!"
-    },
-    {
-      "name":"Kazama",
-      "product":"Personalised Photo Collage",
-      "ratings":"4.6",
-      "feedback":"Value-for-money"
-    }
-  ]
+
+  title = 'Angular Search Using ng2-search-filter';
+  listdata:Customer[];
+  productId:any;
+  customerName:any;
+  productName:any;
+  customerFeedBack:any;
+  ratings:any;
+
+  constructor(private CustomerService: CustomerService,private userService: UserService, private router: Router){}
+
+  ngOnInit():void{
+    this.getAllAdminreview();
+  }
+  private getAllAdminreview() {
+    this.CustomerService.getCustomerList().subscribe(data=>{
+      this.listdata=data;
+    })
+    console.log(this.listdata);
+  }
 starRating = 0;
+logout(): void {
+  this.userService.logout();
+  this.router.navigate(['/login']);
+}
 }

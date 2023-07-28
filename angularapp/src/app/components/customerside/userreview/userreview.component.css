@@ -1,10 +1,8 @@
 
-form div {
-  margin-bottom: 60px;
-}
 .header {
   background-color: #e09f07; 
-  padding: 10px; 
+  /* Replace with your desired background color */
+  padding: 10px; /* Add padding to provide spacing */
 }
 
 h1 {
@@ -13,7 +11,11 @@ h1 {
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  
+
+form div {
+  margin-bottom: 60px;
+}
+
 label {
   display: block;
   font-weight: bold;
@@ -98,7 +100,4 @@ button:hover {
   border: 1px solid #000000;
   border-radius: 5px;
   font-family: Arial, sans-serif; /* Change the font family */
-}
-.error{
-  color: red
 }

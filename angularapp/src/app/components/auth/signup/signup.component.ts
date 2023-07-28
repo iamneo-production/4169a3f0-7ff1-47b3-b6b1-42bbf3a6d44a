@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/user';
+import { UserService } from 'src/app/user.service';
+import { Router } from '@angular/router';
 
 
 
@@ -9,10 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  user: User = new User();
 
-  ngOnInit(): void {
-  }
+  constructor(private userService: UserService,private router:Router) { }
+
+  ngOnInit(): void {}
   username: string = '';
   email: string = '';
   phoneNumber: string = '';
@@ -23,7 +27,7 @@ export class SignupComponent implements OnInit {
 
   validateUsername() {
     if (this.username.trim() === '') {
-      this.errorMessage = 'ENTER USERNAME';
+      this.errorMessage = 'Enter username';
     } else if (this.username.length < 6) {
       this.errorMessage = 'At least 6 letters';
     } else {
@@ -58,14 +62,14 @@ export class SignupComponent implements OnInit {
   }
 
   validateConfirmPassword() {
-    if (this.confirmPassword !== this.password) {
+    if (this.confirmPassword !== this.user.password) {
       this.errorMessage = "Passwords don't match";
     } else {
       this.errorMessage = '';
     }
   }
 
-  submitForm() {
+  registerUser(): void {
     if (
       this.username.trim() !== '' &&
       this.username.length >= 6 &&
@@ -77,12 +81,18 @@ export class SignupComponent implements OnInit {
     ) {
       this.showPopup = true;
     }
+    this.userService.addUser(this.user)
+      .subscribe(() => {
+        this.user = new User(); // Clear the form after successful registration
+      });
+      this.router.navigate(['/login']);
+
   }
 
   hidePopup() {
     this.showPopup = false;
   }
   register(){
-    alert('Registered Succesful');
+    alert('Registered Successful');
   }
 }

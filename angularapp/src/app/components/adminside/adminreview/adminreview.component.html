@@ -1,36 +1,41 @@
+<div class="main" style="background-image: url('../../assets/image/Background.jpg');
+width:1349px;
+height:700px;
+background-position:center; 
+background-size: cover">
 <div class="head">
     <nav class="navbar navbar-dark">
-      <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
-      <a class="navbar-brand fa fa-home" href="../admin">Home</a>
-      <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
-      <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
-      <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
-      <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-      <a class="navbar-brand" href="../admin">Logout</a>
-</nav>
+        <a class="navbar-brand fa fa-camera" [routerLink]="['/admin']" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-home" [routerLink]="['/admin']">Home</a>
+        <a class="navbar-brand fa fa-gift" [routerLink]="['/addgifts']" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" [routerLink]="['/theme']" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" [routerLink]="['/admin-review']">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" [routerLink]="['/order']" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="#" (click)="logout()">Logout</a>
+  </nav>
     </div>
     <div class="col-md-12 mt-8 mb-4" id="divi">
         <div class="searchbar">
-            <a class="navbar-brand fa fa-search"></a>
-            <input type="text" placeholder="Find me here">
+            <input class="form-control" type="text" autocomplete="off" 
+            placeholder="&#61442;find me here">
         </div></div>
         <br><br><br>
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-plain">
+                        <div class="card card-plain" style="background: transparent; backdrop-filter: blur(5px); color: black;">
                           <div class="card card-nav-tabs">
                               <div class="card-header">
-                                <div class="text-center"><h3><u>CUSTOMERS FEEDBACK</u></h3></div>
+                                <div class="text-center" ><h3><u>CUSTOMERS FEEDBACK</u></h3></div>
                               </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
-                                        <thead class="">
+                                        <thead class="table-head">
                                             <th>
-                                            S.no
+                                            S.No
                                             </th>
                                             <th>
                                                 Customer Name
@@ -48,9 +53,9 @@
                                         <tbody>
                                             <tr *ngFor="let item of listdata;let i =index">
                                                 <td><span>{{i+1}}</span></td>
-                                                <td><span>{{item.name}}</span></td>
-                                                <td><span>{{item.product}}</span></td>
-                                                <td><span>{{item.feedback}}</span></td>
+                                                <td><span>{{item.customerName}}</span></td>
+                                                <td><span>{{item.productName}}</span></td>
+                                                <td><span>{{item.customerFeedBack}}</span></td>
                                                 <td><span><app-star-rating [rating]="item.ratings"></app-star-rating></span></td>
                                             </tr>
                                         </tbody>
@@ -62,4 +67,5 @@
                 </div>
             </div>
           </div>          
-          
+        </div>
+        

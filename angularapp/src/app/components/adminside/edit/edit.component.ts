@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ThemesService } from 'src/app/themes.service';
+import { UserService } from 'src/app/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,22 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent {
-  userform:FormGroup;
-
-  listdata:any;
-  constructor(private fb:FormBuilder,private route:Router){
-    this.listdata=[];
-  this.userform=this.fb.group({
-    name:['',Validators.required],
-    price:['',Validators.required],
-    image:['',Validators.required],
-    quantity:['',Validators.required],
-    details:['',Validators.required]
-  })
+   
+  themesToUpdate={
+    themeName:"",
+    themePrice:"",
+    themeDescription:""
+  };
+  @Input() themes:any;
+  @Output() editedThemes=new EventEmitter();
+  constructor(private themesService:ThemesService,private userService: UserService, private router: Router){
+}
+ edit(themes: any){
+  this.editedThemes.emit(themes);
+  var msg=alert("Updated Successfully");
   }
-  edit(){
-    this.listdata.push(this.userform.value);
-    var delBtn = confirm("updated successfully");
+  logout(): void {
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
-
+  
 }
