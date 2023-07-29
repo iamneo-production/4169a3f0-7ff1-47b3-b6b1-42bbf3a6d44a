@@ -18,7 +18,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-@CrossOrigin(origins = "https://8081-bdfcbfadbcfdadebbecffccbcffabaefd.project.examly.io")
+
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io")
+
 @RestController
 @RequestMapping("/login")
 public class LoginController {

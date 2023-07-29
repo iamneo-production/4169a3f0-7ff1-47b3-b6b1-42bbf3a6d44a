@@ -8,9 +8,9 @@ import { User } from './user';
 })
 export class UserService {
 
-  private apiUrl = 'https://8080-bdfcbfadbcfdadebbecffccbcffabaefd.project.examly.io/admin/users';
-  private isLoggedInFlag: boolean = false;
-  private userRole: string = '';
+
+  private apiUrl = 'https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/users';
+
 
 
 

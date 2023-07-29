@@ -1,4 +1,3 @@
-package com.examly.springapp.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,8 +9,8 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "OrderTable")
-public class OrderModel {
+@Table(name = "Order")
+public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int orderId;
@@ -105,5 +104,4 @@ public class OrderModel {
     public void setSelectGiftModel(String selectGiftModel) {
         this.selectGiftModel = selectGiftModel;
     }
-
 }
