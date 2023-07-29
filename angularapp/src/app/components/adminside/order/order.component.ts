@@ -11,6 +11,7 @@ export class OrderComponent implements OnInit {
   gifts: OrderModel[]=[];
 constructor(private orderService: OrderService){
 }
+giftquantity=1;
 ngOnInit(): void {
   this.getorders();
 } 

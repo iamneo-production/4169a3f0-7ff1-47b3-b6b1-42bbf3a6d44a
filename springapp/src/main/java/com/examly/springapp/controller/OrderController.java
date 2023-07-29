@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import com.examly.springapp.model.OrderModel;
 import com.examly.springapp.repository.OrderRepository;
@@ -72,6 +69,16 @@ public class OrderController {
 	}
 	@GetMapping("/admin/orders/{orderId}")
 	public ResponseEntity<OrderModel> getOrderById(@PathVariable int orderId)
+	{
+		OrderModel e = orderRepo.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
+		return ResponseEntity.ok(e);
+	}
+    @GetMapping("/admin/order")
+	public List<OrderModel> viewOrders(){
+		return orderRepo.findAll();
+	}
+	@GetMapping("/admin/order/{orderId}")
+	public ResponseEntity<OrderModel> getOrderByid(@PathVariable int orderId)
 	{
 		OrderModel e = orderRepo.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
 		return ResponseEntity.ok(e);

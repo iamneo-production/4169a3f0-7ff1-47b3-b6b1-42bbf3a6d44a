@@ -40,6 +40,17 @@ public List<GiftModel> getAllgifts(){
 	return gift.findAll();
 	
 }
+@GetMapping("/gift")
+public List<GiftModel> getAllgift(){
+	return gift.findAll();
+	
+}
+@GetMapping("/gift/{orderId}")
+	public ResponseEntity<GiftModel> getOrderById(@PathVariable int orderId)
+	{
+		GiftModel e = gift.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
+		return ResponseEntity.ok(e);
+	}
 @PostMapping("/addGift")
 public String addGift(@RequestBody GiftModel data)
 {
