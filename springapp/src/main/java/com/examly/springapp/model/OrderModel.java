@@ -12,8 +12,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "OrderTable")
 public class OrderModel {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private int orderId;
     private String orderName;
     private String orderAddress;

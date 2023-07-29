@@ -23,7 +23,7 @@ import com.examly.springapp.model.OrderModel;
 import com.examly.springapp.repository.OrderRepository;
 import com.examly.springapp.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io")
 @RestController
 public class OrderController {
     @Autowired
@@ -75,5 +75,9 @@ public class OrderController {
 	{
 		OrderModel e = orderRepo.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
 		return ResponseEntity.ok(e);
+	}
+    @GetMapping("/user/getCartItems")
+	public List<OrderModel> getCartItems(){
+		return orderRepo.findAll();
 	}
 }
