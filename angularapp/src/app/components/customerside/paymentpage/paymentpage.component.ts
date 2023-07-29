@@ -52,10 +52,10 @@ export class PaymentpageComponent implements OnInit {
   }
 
   doFun() {
-    this.tColorA = '#FFDB58';
+    this.tColorA = '#e09f07';
     this.tColorB = '#444';
     this.tColorC = '#444';
-    this.iconA = '#FFDB58';
+    this.iconA = '#e09f07';
     this.iconB = '#aaa';
     this.iconC = '#aaa';
     this.cDetailsVisible = true;
@@ -63,10 +63,10 @@ export class PaymentpageComponent implements OnInit {
 
   doFunA() {
     this.tColorA = '#444';
-    this.tColorB = '#FFDB58';
+    this.tColorB = '#e09f07';
     this.tColorC = '#444';
     this.iconA = '#aaa';
-    this.iconB = '#FFDB58';
+    this.iconB = '#e09f07';
     this.iconC = '#aaa';
     this.cDetailsVisible = false;
   }
@@ -74,10 +74,10 @@ export class PaymentpageComponent implements OnInit {
   doFunB() {
     this.tColorA = '#444';
     this.tColorB = '#444';
-    this.tColorC = '#FFDB58';
+    this.tColorC = '#e09f07';
     this.iconA = '#aaa';
     this.iconB = '#aaa';
-    this.iconC = '#FFDB58';
+    this.iconC = '#e09f07';
     this.cDetailsVisible = false;
   }
 

@@ -39,7 +39,7 @@ body{
 .methods div::after{
 	content: '';
 	display: inline-block;
-	color: #FFDB58;
+	color: #e09f07;
 	width: 0;
 	height: 0;
 	border-color: transparent;
@@ -158,7 +158,7 @@ button{
 	margin-top: 30px;
 	font-size: 18px;
 	color: #444;
-	background-color: #FFDB58;
+	background-color:#e09f07;
 }
 button:hover{
 	background-color: #444;
