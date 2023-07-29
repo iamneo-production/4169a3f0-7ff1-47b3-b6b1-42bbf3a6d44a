@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io")
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
 
 
 

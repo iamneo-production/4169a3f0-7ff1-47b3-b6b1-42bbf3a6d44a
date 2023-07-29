@@ -19,7 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
 
-@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io")
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
 
 @RestController
 @RequestMapping("/login")

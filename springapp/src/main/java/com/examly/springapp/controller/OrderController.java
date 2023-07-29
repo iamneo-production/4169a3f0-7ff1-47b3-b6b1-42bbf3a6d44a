@@ -20,7 +20,7 @@ import com.examly.springapp.model.OrderModel;
 import com.examly.springapp.repository.OrderRepository;
 import com.examly.springapp.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io")
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 public class OrderController {
     @Autowired

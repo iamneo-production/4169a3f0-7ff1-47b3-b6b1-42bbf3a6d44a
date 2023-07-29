@@ -7,7 +7,7 @@ import { Product } from 'src/app/Product';
   providedIn: 'root'
 })
 export class ProductsService {
-  private readonly API_URL = 'https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin';
+  private readonly API_URL = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin';
 
   constructor(private http: HttpClient) { }
 
@@ -24,10 +24,10 @@ export class ProductsService {
   }
 
   getCartItems(): Observable<any> {
-    return this.http.get<any>(`https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/user/getCartItems`);
+    return this.http.get<any>(`https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/getCartItems`);
   }
 
   removeFromCart(productId: number): Observable<any> {
-    return this.http.delete(`https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/user/order/deleteOrder/${productId}`);
+    return this.http.delete(`https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/order/deleteOrder/${productId}`);
   }
 }

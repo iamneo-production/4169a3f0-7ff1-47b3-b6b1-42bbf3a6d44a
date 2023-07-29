@@ -13,7 +13,7 @@ export class ViewpageComponent implements OnInit {
   gifts: any[] = [];
   type:String;
   products: any[];
-  private baseUrl = 'https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin'
+  private baseUrl = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin'
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { 
   }
@@ -54,7 +54,7 @@ export class ViewpageComponent implements OnInit {
   }
 
   searchGifts(filters: any): void {
-    this.http.get<any[]>('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/giftfinder', { params: filters })
+    this.http.get<any[]>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/giftfinder', { params: filters })
       .subscribe(response => {
         this.gifts = response;
       });
