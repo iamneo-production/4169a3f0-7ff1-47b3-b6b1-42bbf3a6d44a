@@ -7,7 +7,7 @@
         <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
         <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
         <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-        <a class="navbar-brand" href="../admin">Logout</a>
+        <a class="navbar-brand" href="../login">Logout</a>
   </nav>
 </div>
 <div id="body">
@@ -27,7 +27,6 @@
         <th id="userid">User id</th>
         <th id="giftname">Gift Name</th>
         <th id="giftprice">Gift Price</th>
-        <!-- <th id="giftpaid">Amount Paid<br>(Gifts & Themes)</th> -->
         <th id="giftquantity">Quantity</th>
     </thead>
     <tbody>
@@ -36,7 +35,6 @@
             <td>User{{i+1}}</td>
             <td>{{gift.orderName}}</td>
             <td>{{gift.orderPrice}}</td>
-            <!-- <td>{{gift.giftPaid}}</td>  -->
             <td>{{1}}</td>
         </tr>
     </tbody>

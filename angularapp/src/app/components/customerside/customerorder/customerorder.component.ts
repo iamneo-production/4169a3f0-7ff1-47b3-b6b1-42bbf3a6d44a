@@ -44,7 +44,7 @@ export class CustomerorderComponent implements OnInit {
 
   getProductById(productId: number) {
     // Implement the logic to fetch the product details using HTTP GET request
-    this.http.get<any>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/getProductDetails/' + productId)
+    this.http.get<any>('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/getProductDetails/' + productId)
       .subscribe(
         (response: any) => {
           this.selectedProduct = response;
@@ -82,7 +82,7 @@ export class CustomerorderComponent implements OnInit {
     this.orderForm.patchValue({ orderDate: formattedDate });*/
     if (this.orderForm.valid) {
       // Submit the form data only if the form is valid
-      this.http.post('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/order/AddOrder',this.orderForm.value)
+      this.http.post('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/user/order/AddOrder',this.orderForm.value)
         .subscribe(
           (response: any) => {
             console.log('Order placed successfully');
