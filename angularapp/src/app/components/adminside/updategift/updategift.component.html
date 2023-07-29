@@ -2,13 +2,13 @@
 <header>
   <div class="head">
     <nav class="navbar navbar-dark">
-      <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
-      <a class="navbar-brand fa fa-home" href="../admin">Home</a>
-      <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
-      <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
-      <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
-      <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-      <a class="navbar-brand" href="../logout">Logout</a>
+      <a class="navbar-brand fa fa-camera" [routerLink]="['/admin']" id="admin"><b>Photoshop</b></a>
+      <a class="navbar-brand fa fa-home" [routerLink]="['/admin']">Home</a>
+      <a class="navbar-brand fa fa-gift" [routerLink]="['/addgifts']" id="adminGifts">Gifts</a>
+      <a class="navbar-brand fa fa-search" [routerLink]="['/theme']" id="adminThemes">Themes</a>
+      <a class="navbar-brand fa fa-comments" [routerLink]="['/admin-review']">Customers Feedback</a>
+      <a class="navbar-brand fa fa-shopping-cart" [routerLink]="['/order']" id="adminOrders">Orders</a>
+      <a class="navbar-brand" href="#" (click)="logout()">Logout</a>
 </nav>
     </div>
   </header><br>

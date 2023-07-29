@@ -11,6 +11,7 @@ export class GiftService {
    private url2="https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/addGift";
    private url3="https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/deleteGift";
    private baseURL="hhttps://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/editGift";
+
   constructor(private httpClient: HttpClient) { }
   getAllGifts(): Observable<GiftModel[]>{
     return this.httpClient.get<GiftModel[]>(`${this.baseUrl}`);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/user';
 import { UserService } from 'src/app/user.service';
+import { Router } from '@angular/router';
 
 
 
@@ -13,10 +14,9 @@ export class SignupComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   username: string = '';
   email: string = '';
   phoneNumber: string = '';
@@ -85,6 +85,7 @@ export class SignupComponent implements OnInit {
       .subscribe(() => {
         this.user = new User(); // Clear the form after successful registration
       });
+      this.router.navigate(['/login']);
 
   }
 
