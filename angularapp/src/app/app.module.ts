@@ -28,6 +28,7 @@ import { ViewpageComponent } from './components/customerside/userhomepage/viewpa
 import { GiftfinderComponent } from './components/customerside/userhomepage/giftfinder/giftfinder.component';
 import { PaymentpageComponent } from './components/customerside/paymentpage/paymentpage.component';
 import { CartComponent } from './components/customerside/cart/cart.component';
+import { CustomFilterPipe } from './custom-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { CartComponent } from './components/customerside/cart/cart.component';
     GiftfinderComponent,
     PaymentpageComponent,
     CartComponent,
-   
+    CustomFilterPipe
   ],
   imports: [
    BrowserModule,

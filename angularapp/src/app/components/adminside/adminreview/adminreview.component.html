@@ -5,14 +5,14 @@ background-position:center;
 background-size: cover">
 <div class="head">
     <nav class="navbar navbar-dark">
-      <a class="navbar-brand fa fa-camera" href="#" id="admin"><b>Photoshop</b></a>
-      <a class="navbar-brand fa fa-home" href="../admin">Home</a>
-      <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
-      <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
-      <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
-      <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-      <a class="navbar-brand" href="../admin">Logout</a>
-</nav>
+        <a class="navbar-brand fa fa-camera" [routerLink]="['/admin']" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-home" [routerLink]="['/admin']">Home</a>
+        <a class="navbar-brand fa fa-gift" [routerLink]="['/addgifts']" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" [routerLink]="['/theme']" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" [routerLink]="['/admin-review']">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" [routerLink]="['/order']" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="#" (click)="logout()">Logout</a>
+  </nav>
     </div>
     <div class="col-md-12 mt-8 mb-4" id="divi">
         <div class="searchbar">
@@ -53,9 +53,9 @@ background-size: cover">
                                         <tbody>
                                             <tr *ngFor="let item of listdata;let i =index">
                                                 <td><span>{{i+1}}</span></td>
-                                                <td><span>{{item.name}}</span></td>
-                                                <td><span>{{item.product}}</span></td>
-                                                <td><span>{{item.feedback}}</span></td>
+                                                <td><span>{{item.customerName}}</span></td>
+                                                <td><span>{{item.productName}}</span></td>
+                                                <td><span>{{item.customerFeedBack}}</span></td>
                                                 <td><span><app-star-rating [rating]="item.ratings"></app-star-rating></span></td>
                                             </tr>
                                         </tbody>

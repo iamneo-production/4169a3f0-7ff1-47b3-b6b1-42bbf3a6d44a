@@ -8,7 +8,9 @@ import { Customer } from './customer';
 })
 export class CustomerService {
 
-  private basURL = "https://8080-dabbcfcbdefcfdadebbecffccbcffabaefd.project.examly.io/";
+  private basURL = "https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/getreview";
+  private url2="https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/addreview";
+
   constructor(private httpClient: HttpClient) { }
    
   getCustomerList(): Observable<Customer[]>{
@@ -16,6 +18,6 @@ export class CustomerService {
   }
 
   createCustomer(customer: Customer): Observable<Object>{
-    return this.httpClient.post(`${this.basURL}`,customer);
+    return this.httpClient.post(`${this.url2}`,customer);
   }
 }

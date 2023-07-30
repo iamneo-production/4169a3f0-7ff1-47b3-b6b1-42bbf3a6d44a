@@ -1,119 +1,146 @@
 package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.util.Date;
-
-
-
 
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="giftmodels")
+@Table(name = "giftmodels")
 public class GiftModel {
-	@Id
-private int giftId;
-private String giftName;
-private String GiftImageUrl;
-private String giftDetails;
 
-private Integer giftPrice;
-private Integer giftQuantity;
-private String occassion;
-private Integer rating;
-private String recipient;
-private Integer sold;
-private LocalDateTime dateTime;
-private Double discountPrice;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int giftId;
+    private String giftName;
+    private String GiftImageUrl;
+    private String giftDetails;
 
-public String getOccassion() {
-	return occassion;
-}
-public void setOccassion(String occassion) {
-	this.occassion = occassion;
-}
+    private double giftPrice;
+    private int giftQuantity;
+    private String occasion;
+    private int rating;
+    private String recipient;
+    private int sold;
+    private LocalDateTime dateTime;
+    private double discountPrice;
+    private String giftDescription;
 
-public Integer getRating() {
-	return rating;
-}
-public void setRating(Integer rating) {
+    public String getOccasion() {
+        return occasion;
+    }
 
-	this.rating = rating;
-}
-public String getRecipient() {
-	return recipient;
-}
-public void setRecipient(String recipient) {
-	this.recipient = recipient;
-}
+    public void setOccasion(String occasion) {
+        this.occasion = occasion;
+    }
 
-public Integer getSold() {
-	return sold;
-}
-public void setSold(Integer sold) {
+    public int getRating() {
+        return rating;
+    }
 
-	this.sold = sold;
-}
+    public void setRating(int rating) {
 
-public LocalDateTime getDateTime() {
-	return dateTime;
-}
-public void setDateTime(LocalDateTime dateTime) {
-	this.dateTime = dateTime;
-}
+        this.rating = rating;
+    }
 
-public Double getDiscountPrice() {
-	return discountPrice;
-}
-public void setDiscountPrice(Double discountPrice) {
+    public String getRecipient() {
+        return recipient;
+    }
 
-	this.discountPrice = discountPrice;
-}
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold(int sold) {
+
+        this.sold = sold;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public double getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void setDiscountPrice(double discountPrice) {
+
+        this.discountPrice = discountPrice;
+    }
+
+    public int getGiftId() {
+        return giftId;
+    }
+
+    public void setGiftId(int giftId) {
+
+        this.giftId = giftId;
+    }
+
+    public String getGiftName() {
+        return giftName;
+    }
+
+    public void setGiftName(String giftName) {
+        this.giftName = giftName;
+    }
+
+    public String getGiftImageUrl() {
+        return GiftImageUrl;
+    }
+
+    public void setGiftImageUrl(String giftImageUrl) {
+        GiftImageUrl = giftImageUrl;
+    }
+
+    public String getGiftDetails() {
+        return giftDetails;
+    }
+
+    public void setGiftDetails(String giftDetails) {
+        this.giftDetails = giftDetails;
+    }
+
+    public double getGiftPrice() {
+        return giftPrice;
+    }
+
+    public void setGiftPrice(double giftPrice) {
+        this.giftPrice = giftPrice;
+    }
+
+    public int getGiftQuantity() {
+        return giftQuantity;
+    }
+
+    public void setGiftQuantity(int giftQuantity) {
+
+        this.giftQuantity = giftQuantity;
+    }
+
+    public String getGiftDescription() {
+        return giftDescription;
+    }
+
+    public void setGiftDescription(String giftDescription) {
+        this.giftDescription = "A Memorable gift you can give your loved ones!";
+    }
 
 
-
-public Integer getGiftId() {
-	return giftId;
-}
-public void setGiftId(Integer giftId) {
-
-	this.giftId = giftId;
-}
-public String getGiftName() {
-	return giftName;
-}
-public void setGiftName(String giftName) {
-	this.giftName = giftName;
-}
-public String getGiftImageUrl() {
-	return GiftImageUrl;
-}
-public void setGiftImageUrl(String giftImageUrl) {
-	GiftImageUrl = giftImageUrl;
-}
-public String getGiftDetails() {
-	return giftDetails;
-}
-public void setGiftDetails(String giftDetails) {
-	this.giftDetails = giftDetails;
-}
-
-public Integer getGiftPrice() {
-	return giftPrice;
-}
-public void setGiftPrice(Integer giftPrice) {
-	this.giftPrice = giftPrice;
-}
-public Integer getGiftQuantity() {
-	return giftQuantity;
-}
-public void setGiftQuantity(Integer giftQuantity) {
-
-	this.giftQuantity = giftQuantity;
-}
 
 }
