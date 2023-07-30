@@ -13,6 +13,7 @@ export class OrderComponent implements OnInit {
   gifts: OrderModel[]=[];
 constructor(private orderService: OrderService,private userService: UserService, private router: Router){
 }
+giftquantity=1;
 ngOnInit(): void {
   this.getorders();
 } 
