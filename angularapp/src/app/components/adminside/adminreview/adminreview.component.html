@@ -53,9 +53,9 @@ background-size: cover">
                                         <tbody>
                                             <tr *ngFor="let item of listdata;let i =index">
                                                 <td><span>{{i+1}}</span></td>
-                                                <td><span>{{item.name}}</span></td>
-                                                <td><span>{{item.product}}</span></td>
-                                                <td><span>{{item.feedback}}</span></td>
+                                                <td><span>{{item.customerName}}</span></td>
+                                                <td><span>{{item.productName}}</span></td>
+                                                <td><span>{{item.customerFeedBack}}</span></td>
                                                 <td><span><app-star-rating [rating]="item.ratings"></app-star-rating></span></td>
                                             </tr>
                                         </tbody>

@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/Product';
-import { ProductsService } from 'src/app/products.service';
+import { ActivatedRoute} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-viewpage',
@@ -10,91 +10,64 @@ import { ProductsService } from 'src/app/products.service';
 })
 export class ViewpageComponent implements OnInit {
 
-  viewType: string;
+  gifts: any[] = [];
+  type:String;
   products: any[];
-  selectedOccasion: string = '';
-  filteredProducts: Product[] = [];
-  filteredGifts: Product[] = [];
-  queryParams: any;
-  filteredRecipient: Product[] = [];
-  selectedRecipient: string = '';
+  private baseUrl = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin'
 
-  constructor(private router: Router,private route: ActivatedRoute,private productsService: ProductsService) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) { 
+  }
 
   ngOnInit(): void {
-  
-    this.route.queryParams.subscribe(params => {  //retrieving queryparams from url
-      this.viewType = params['type'];
-      this.productsService.getProducts().subscribe((products: Product[]) => {
-        this.products = products;
-      });  //assigning product data from service to products property of current component
-      
-      if (this.viewType === 'occasion') {   //conditional statement to decide on which segment to run on viewpage
-        this.selectedOccasion = params['occasion'];
-        this.filterProducts();
-      } else if (this.viewType === 'giftfinder') {
-        this.queryParams = params;
-        this.filterGifts();
-      } else if (this.viewType === 'recipient') {
-        this.selectedRecipient = params['recipient'];
-        this.filterRecipient();
-    }});
-  }
-
-  addToCart(productId: number) {
-    this.router.navigate(['/customerorder', productId]);
-  }
-
-  // To get an array of size equal to given product rating (filled stars)
-  getFilledStars(rating: number): number[] {
-    return Array(rating).fill(0);
-  }
-
-  //To get an array of size equal to (5-rating) unfilled stars
-  getEmptyStars(rating: number): number[] {
-    return Array(5 - rating).fill(0);
-  }
-
-  /*scroller filter based on ocassion*/
-
-  filterProducts(): Product[] {
-    return this.filteredProducts = this.products.filter(
-      (product: Product) => {
-        return (product.occasion === this.selectedOccasion);
+    this.route.queryParams.subscribe(params => {
+      this.type=params['type'];
+      if (this.type === 'occasion') {
+        this.route.queryParams.subscribe(params => {
+              const occasion = params['occasion'];
+             this.getProductsByOccasion(occasion)
+               .subscribe(data => {
+               this.products = data;
+                });
+            });
+      } else if (this.type === 'giftfinder') {
+        this.route.queryParams.subscribe(params => {
+        const filters = {
+          occasion: params.occasion,
+          recipient: params.recipient,
+          minPrice: params.minPrice,
+          maxPrice: params.maxPrice,
+          gifttype: params.gifttype,
+        };
+        this.searchGifts(filters);
+        });
+      }else if(this.type==='recipient'){
+        this.route.queryParams.subscribe(params => {
+          const recipient = params['recipient'];
+         this.getProductsByRecipient(recipient)
+           .subscribe(data => {
+           this.products = data;
+            });
+        });
       }
-    );
+    });
+
   }
 
-/*gift finder filter based on 4 parameter*/
-
-  filterGifts(): Product[] {
-    return this.filteredGifts = this.products.filter(
-      (gift: Product) => {
-      return (
-        (this.queryParams.occasion === '' || gift.occasion === this.queryParams.occasion) &&
-        (this.queryParams.recipient === '' || gift.recipient === this.queryParams.recipient) &&
-        (this.queryParams.price === '' || this.isPriceInRange(gift.price, this.queryParams.price)) &&
-        (this.queryParams.giftType === '' || gift.type === this.queryParams.giftType)
-      );
-
+  searchGifts(filters: any): void {
+    this.http.get<any[]>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/giftfinder', { params: filters })
+      .subscribe(response => {
+        this.gifts = response;
       });
   }
-  //splitting the price range, extract min and max,convert to number and checking if price falls within the given range and return true or false
-  isPriceInRange(price: number, range: string): boolean {
-      const [min, max] = range.split('-').map(Number);
-      return price >= min && price <= max;
-    }
+  
+  private getProductsByOccasion(occasion: string): Observable<any> {
+     const url = `${this.baseUrl}/filterByOccasion?occasion=${occasion}`;
+      return this.http.get(url);
+     }
 
-    /*scroller filter based on recipient*/ 
-    filterRecipient(): Product[] {
-      return this.filteredRecipient = this.products.filter(
-        (product: Product) => {
-          return (product.recipient === this.selectedRecipient);
-        }
-      );
-    }
-
-
-
+     private getProductsByRecipient(recipient: string): Observable<any> {
+      const url = `${this.baseUrl}/filterByRecipient?recipient=${recipient}`;
+       return this.http.get(url);
+      }
 }
 

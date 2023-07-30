@@ -66,6 +66,7 @@
     flex-direction: column;
   }
   
+  .mb-3,
   .form-group input,
   .form-group select {
     background: #000000;

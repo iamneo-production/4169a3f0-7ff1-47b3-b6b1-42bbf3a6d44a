@@ -15,7 +15,7 @@ export class AddgiftsComponent {
   image:any;
   quantity:any;
   details:any;
-  occassion:any;
+  occasion:any;
   rating:any;
   sold:any;
   datetime:any;
