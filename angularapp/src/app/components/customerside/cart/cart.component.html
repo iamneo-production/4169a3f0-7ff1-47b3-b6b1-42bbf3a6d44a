@@ -15,32 +15,19 @@ background-size: cover;">
             <th id="product">Product</th>
             <th id="productName">Product Name</th>
             <th id="productPrice">Price</th>
-            <th id="productQuantity">Quantity</th>
             <th id="action">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of items; let i = index">
                 <td>{{i+1}}</td>
-                <td>{{item.product.name}}</td>
-                <td>{{item.orderDetails.orderPrice}}</td>
-                <td> <button class="btn btn-danger" (click)="updateQuantity(item, item.orderDetails.productQuantity - 1)">-</button>
-                    {{item.orderDetails.productQuantity}}
-                    <button class="btn btn-danger"  (click)="updateQuantity(item, item.orderDetails.productQuantity + 1)">+</button>
-                </td>
+                <td>{{item.orderName}}</td>
+                <td>{{item.orderPrice}}</td>
                 <td>
-                    <button class="btn btn-danger" (click)="editProduct(item.product.id)">Edit</button>
-                    <button class="btn btn-danger"  (click)="deleteProduct(item.product.id)">Delete</button>
+                    <button class="btn btn-danger" (click)="editProduct(item.orderId)">Edit</button>
+                    <button class="btn btn-danger"  (click)="deleteProduct(item.orderId)">Delete</button>
                 </td>
             </tr>
-            <tr>
-                <td></td>
-                <td>Total</td>
-                <td>{{cartTotal}}</td>
-                <td></td>
-                <td></td>
-            </tr>  
-                    
         </tbody>
     </table>
     <div class="payment-button">

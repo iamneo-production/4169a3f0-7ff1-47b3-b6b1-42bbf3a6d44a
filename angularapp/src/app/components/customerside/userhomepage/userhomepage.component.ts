@@ -67,7 +67,7 @@ export class UserhomepageComponent implements OnInit {
   }
 
   getDistinctOccasions(): void {
-    this.http.get<String[]>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/occasions')
+    this.http.get<String[]>('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/occasions')
       .subscribe(occasions => {
         this.distinctOccasions = occasions;
         });
@@ -75,7 +75,7 @@ export class UserhomepageComponent implements OnInit {
   }
 
   getDistinctRecipient(): void {
-    this.http.get<String[]>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/recipient')
+    this.http.get<String[]>('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/recipient')
       .subscribe(recipient => {
         this.distinctRecipient = recipient;
         });
@@ -96,7 +96,7 @@ export class UserhomepageComponent implements OnInit {
 
 
   getBestSellers() {
-    const url = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/best-sellers';
+    const url = 'https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/best-sellers';
     this.http.get<Product[]>(url)
       .subscribe((products: Product[]) => {
         this.bestSellers = products;
@@ -105,7 +105,7 @@ export class UserhomepageComponent implements OnInit {
   }
 
   loadNewestArrivalProducts() {
-    const url = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/new-arrival'; 
+    const url = 'https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/new-arrival'; 
 
     this.http.get<Product[]>(url).subscribe(
       products => {
@@ -118,7 +118,7 @@ export class UserhomepageComponent implements OnInit {
     console.log(this.topNewArrivals);
   }
   fetchTrendingItems() {
-    this.http.get<Product[]>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/trending').subscribe(
+    this.http.get<Product[]>('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/trending').subscribe(
       (response) => {
         this.trendingItems = response;
       },
@@ -129,7 +129,7 @@ export class UserhomepageComponent implements OnInit {
   }
   getFathersDayProducts() {
 
-    this.http.get<any[]>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/fathers-day').subscribe(
+    this.http.get<any[]>('https://8080-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io/admin/fathers-day').subscribe(
         (response) => {
           this.fathersDayProducts = response;
         },

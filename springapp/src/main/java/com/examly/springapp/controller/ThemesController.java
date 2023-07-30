@@ -20,7 +20,7 @@ import com.examly.springapp.repository.ThemesRepository;
 
 
 @RestController
-@CrossOrigin(allowedHeaders="*",origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(allowedHeaders="*",origins = "https://8081-afebfaaebebecfdadebbecffbdeeacabbcedbbb.project.examly.io")
 @RequestMapping("/admin")
 public class ThemesController {
 	@Autowired
@@ -39,6 +39,11 @@ public class ThemesController {
     	return themesRepository.findAll();
     }
     
+	@GetMapping("/theme")
+    public List<Themes> getThemes(){
+    	return themesRepository.findAll();
+    }
+    
     @DeleteMapping("/deleteTheme/{themeId}")
 	public ResponseEntity<String> deleteTheme(@PathVariable int themeId){
     	Themes themes = themesRepository.findById(themeId).orElseThrow(()->new ResourceNotFoundException("no theme with this id: "+themeId));
@@ -46,6 +51,12 @@ public class ThemesController {
 		
 		return ResponseEntity.ok("Theme deleted");
     }
+	@GetMapping("/theme/{orderId}")
+	public ResponseEntity<Themes> getOrderById(@PathVariable int orderId)
+	{
+		Themes e = themesRepository.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
+		return ResponseEntity.ok(e);
+	}
     
     @PutMapping("/editTheme/{themeId}")
 	public ResponseEntity<String> updateTheme(@PathVariable int themeId, @RequestBody Themes themeDetails){
