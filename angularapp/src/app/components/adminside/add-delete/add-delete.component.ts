@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ThemesService } from 'src/app/themes.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/user.service';
+
+
 
 
 @Component({
@@ -18,7 +21,7 @@ export class AddDeleteComponent {
 
 
 
-  constructor(private themesService:ThemesService,private router: Router){
+  constructor(private themesService:ThemesService,private router: Router,private userService: UserService){
       this.getThemeDetails();
   }
   add(addForm: { value: any; reset: () => void; }){
@@ -73,5 +76,9 @@ export class AddDeleteComponent {
   }
 }
     this.openEdit=false;
+  }
+  logout(): void {
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }

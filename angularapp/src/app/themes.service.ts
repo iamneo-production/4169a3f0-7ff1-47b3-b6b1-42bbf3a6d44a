@@ -11,7 +11,7 @@ export class ThemesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  API='https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/admin';
+  API='https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin';
    public addTheme(themeData:Theme):Observable<Object>{
      return this.httpClient.post(this.API + '/addTheme' ,themeData,{responseType:'text'});
    }

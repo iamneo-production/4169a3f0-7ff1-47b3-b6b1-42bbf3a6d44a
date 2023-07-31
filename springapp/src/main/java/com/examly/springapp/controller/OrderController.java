@@ -4,9 +4,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +21,9 @@ import java.time.format.DateTimeFormatter;
 
 import com.examly.springapp.model.OrderModel;
 import com.examly.springapp.repository.OrderRepository;
+import com.examly.springapp.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "https://8081-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io")
+@CrossOrigin(origins = "https://8081-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io")
 @RestController
 public class OrderController {
     @Autowired
@@ -63,4 +66,14 @@ public class OrderController {
         orderRepo.deleteById(orderId);
         return "Order Deleted Successfully " + orderId;
     }
+    @GetMapping("/admin/orders")
+	public List<OrderModel> viewOrder(){
+		return orderRepo.findAll();
+	}
+	@GetMapping("/admin/orders/{orderId}")
+	public ResponseEntity<OrderModel> getOrderById(@PathVariable int orderId)
+	{
+		OrderModel e = orderRepo.findById(orderId).orElseThrow(()->new ResourceNotFoundException("no order with this id: "+orderId));
+		return ResponseEntity.ok(e);
+	}
 }

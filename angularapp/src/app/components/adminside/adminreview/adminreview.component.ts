@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Customer } from 'src/app/customer';
 import { CustomerService} from 'src/app/customer.service';
+import { UserService } from 'src/app/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminreview',
@@ -17,7 +19,7 @@ export class AdminreviewComponent {
   customerFeedBack:any;
   ratings:any;
 
-  constructor(private CustomerService: CustomerService){}
+  constructor(private CustomerService: CustomerService,private userService: UserService, private router: Router){}
 
   ngOnInit():void{
     this.getAllAdminreview();
@@ -29,4 +31,8 @@ export class AdminreviewComponent {
     console.log(this.listdata);
   }
 starRating = 0;
+logout(): void {
+  this.userService.logout();
+  this.router.navigate(['/login']);
+}
 }

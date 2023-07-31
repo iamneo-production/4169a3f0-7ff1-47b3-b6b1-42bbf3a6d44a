@@ -7,11 +7,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'https://8080-dcabbfbbebfcfdadebbecffccbcffabaefd.project.examly.io/user/order/AddOrder'; 
+  private apiUrl = 'https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/order/AddOrder'; 
 
   constructor(private http: HttpClient) {}
-
   addOrder(order: OrderModel): Observable<any> {
     return this.http.post<any>(this.apiUrl, order);
+  }
+  // FOR THE ADMIN VIEW ORDERS PAGE
+  private baseurl="https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/orders";
+
+  getOrderList(): Observable<OrderModel[]>{
+    return this.http.get<OrderModel[]>(`${this.baseurl}`);
+  }
+  getById(id:number) :Observable<OrderModel>{
+    return this.http.get<OrderModel>(`${this.baseurl}/${id}`);
   }
 }
