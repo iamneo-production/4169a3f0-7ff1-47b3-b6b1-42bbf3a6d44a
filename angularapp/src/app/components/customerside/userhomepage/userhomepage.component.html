@@ -22,15 +22,15 @@ choose and order the best possible gifts for their beloved ones. -->
       <!-- Wrapper for slides -->
        <div class="carousel-inner">
         <div class="item active">
-          <img src="https://cdn.igp.com/f_auto,q_auto,t_pnopt32prodlp/banners/birthday_d_igp_banner_20221227.jpg" alt="Birthday" style="width:100%;" (click)="navigateToViewPage('Birthday')">
+          <img src="https://cdn.igp.com/f_auto,q_auto,t_pnopt32prodlp/banners/birthday_d_igp_banner_20221227.jpg" alt="Birthday" style="width:100%;" (click)="navigateToViewPageOccasion('Birthday')">
         </div>
   
         <div class="item">
-          <img src="https://cdn.igp.com/f_auto,q_auto,t_pnopt32prodlp/banners/rakhi_d_igp_banner_20230610.jpg" alt="rakshabandan" style="width:100%;" (click)="navigateToViewPage('rakshabandan')">
+          <img src="https://cdn.igp.com/f_auto,q_auto,t_pnopt32prodlp/banners/rakhi_d_igp_banner_20230610.jpg" alt="rakshabandan" style="width:100%;" (click)="navigateToViewPageOccasion('rakshabandan')">
         </div>
       
         <div class="item">
-          <img src="https://cdn.igp.com/f_auto,q_auto,t_pnopt32prodlp/banners/anniversary_d_igp_banner_20221226.jpg" alt="Anniversary" style="width:100%;" (click)="navigateToViewPage('Anniversary')">
+          <img src="https://cdn.igp.com/f_auto,q_auto,t_pnopt32prodlp/banners/anniversary_d_igp_banner_20221226.jpg" alt="Anniversary" style="width:100%;" (click)="navigateToViewPageOccasion('Anniversary')">
         </div>
       </div> 
   
@@ -77,13 +77,13 @@ choose and order the best possible gifts for their beloved ones. -->
   <div class="image-container">
       <div class="image-scroll">
         <div class="image-item">
-        <img src="https://getwallpapers.com/wallpaper/full/9/b/5/282243.jpg" (click)="navigateToViewPage('Birthday')" alt="Birthday" />
-    <img src="https://getwallpapers.com/wallpaper/full/2/3/f/1128636-amazing-hd-wedding-backgrounds-2160x1440.jpg" (click)="navigateToViewPage('wedding')" alt="Wedding" />
-    <img src="https://wallpapercave.com/wp/v5rXPgi.jpg" (click)="navigateToViewPage('Aniversary')" alt="aniversary" />
-    <img src="https://neolittle.com/wp-content/uploads/2019/12/Best-Places-to-Throw-a-Baby-Shower-15-BEST-Original-Places-In-2020-scaled.jpg" (click)="navigateToViewPage('baby shower')" alt="baby shower" />
-    <img src="https://i.ytimg.com/vi/4FIG06qZ0as/maxresdefault.jpg" (click)="navigateToViewPage('house warming')" alt="house warming" />  
-    <img src="https://fthmb.tqn.com/JN7H6NErzzHMM8xb0Iwq1IppNVU=/2122x1415/filters:fill(auto,1)/GettyImages-109378462-56a484113df78cf77282cc34.jpg" (click)="navigateToViewPage('raksha bandan')" alt="rakshabandan" />
-    <img src="https://im.indiatimes.in/content/2023/Jun/happy-fathers-day-cards4_648e0e6579551.jpg?w=725&h=527&cc=1" (click)="navigateToViewPage('Fathers day')" alt="fathers day" />
+        <img src="https://getwallpapers.com/wallpaper/full/9/b/5/282243.jpg" (click)="navigateToViewPageOccasion('Birthday')" alt="Birthday" />
+    <img src="https://getwallpapers.com/wallpaper/full/2/3/f/1128636-amazing-hd-wedding-backgrounds-2160x1440.jpg" (click)="navigateToViewPageOccasion('wedding')" alt="Wedding" />
+    <img src="https://wallpapercave.com/wp/v5rXPgi.jpg" (click)="navigateToViewPageOccasion('Aniversary')" alt="aniversary" />
+    <img src="https://neolittle.com/wp-content/uploads/2019/12/Best-Places-to-Throw-a-Baby-Shower-15-BEST-Original-Places-In-2020-scaled.jpg" (click)="navigateToViewPageOccasion('baby shower')" alt="baby shower" />
+    <img src="https://i.ytimg.com/vi/4FIG06qZ0as/maxresdefault.jpg" (click)="navigateToViewPageOccasion('house warming')" alt="house warming" />  
+    <img src="https://fthmb.tqn.com/JN7H6NErzzHMM8xb0Iwq1IppNVU=/2122x1415/filters:fill(auto,1)/GettyImages-109378462-56a484113df78cf77282cc34.jpg" (click)="navigateToViewPageOccasion('raksha bandan')" alt="rakshabandan" />
+    <img src="https://im.indiatimes.in/content/2023/Jun/happy-fathers-day-cards4_648e0e6579551.jpg?w=725&h=527&cc=1" (click)="navigateToViewPageOccasion('Fathers day')" alt="fathers day" />
   </div>
   </div>
     </div>
@@ -101,18 +101,18 @@ choose and order the best possible gifts for their beloved ones. -->
 
   <section class="products">
     <div class="product" *ngFor="let product of bestSellers">
-      <img [src]="product.image" [alt]="product.name">
-      <h2>{{ product.name }}</h2>
-      <p>Rs.{{ product.price }}</p>
+      <img [src]="product.giftImageUrl" [alt]="product.giftName">
+      <h2>{{ product.giftName }}</h2>
+      <p>Rs.{{ product.giftPrice }}</p>
       <div>
         <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
         <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
       </div>
-      <ng-container *ngIf="product.stock < 10">
-      <p><span [style.color]="product.stock < 10 ? 'red' : 'black'">{{ product.stock }}</span>  Piece left, Order soon!</p>
+      <ng-container *ngIf="product.giftQuantity < 10">
+      <p><span [style.color]="product.giftQuantity < 10 ? 'red' : 'black'">{{ product.giftQuantity }}</span>  Piece left, Order soon!</p>
     </ng-container>
       <br>
-      <button (click)="addToCart(product['id'])">Add to Cart</button> 
+      <button (click)="addToCart(product['giftId'])">Add to Cart</button> 
     </div>
   </section>
 </div>
@@ -131,19 +131,19 @@ choose and order the best possible gifts for their beloved ones. -->
 
   <section class="products">
     <div class="product" *ngFor="let product of topNewArrivals">
-      <img [src]="product.image" [alt]="product.name">
-      <h2>{{ product.name }}</h2>
-      <p>Rs.{{ product.price }}</p>
+      <img [src]="product.giftImageUrl" [alt]="product.giftName">
+      <h2>{{ product.giftName }}</h2>
+      <p>Rs.{{ product.giftPrice }}</p>
       <div>
         <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
         <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
       </div>
-      <ng-container *ngIf="product.stock < 10">
-        <p><span [style.color]="product.stock < 10 ? 'red' : 'black'">{{ product.stock }}</span>  Piece left, Order soon!</p>
+      <ng-container *ngIf="product.giftQuantity < 10">
+        <p><span [style.color]="product.giftQuantity < 10 ? 'red' : 'black'">{{ product.giftQuantity }}</span>  Piece left, Order soon!</p>
       </ng-container>
       <p>{{ product.dateTime | date }}</p>
       <br>
-      <button (click)="addToCart(product['id'])">Add to Cart</button> 
+      <button (click)="addToCart(product['giftId'])">Add to Cart</button> 
     </div>
   </section>
 </div>
@@ -165,14 +165,14 @@ choose and order the best possible gifts for their beloved ones. -->
 <div class="image-container">
   <div class="image-scroll">
     <div class="image-item">
-    <img src="https://crafterscupboard.com.au/image/cache/catalog/Stock/A2Z%20Scraplets/Husband%20Script%20Word-228x228.jpg" (click)="MoveToViewPage('Husband')" alt="Birthday" />
-<img src="https://cdn11.bigcommerce.com/s-m28of/images/stencil/500x659/products/1083/3969/weldedwordfather-bold__40494.1577479135.png?c=2" (click)="MoveToViewPage('Father')" alt="Birthday" />
-<img src="https://cdn.scrapbook.com/products/cache/SBC_unp-8013_0.jpg" (click)="MoveToViewPage('Brother')" alt="brother" />
-<img src="https://thumbs.dreamstime.com/b/son-hand-written-word-text-typography-design-can-be-used-logo-branding-card-son-hand-written-word-text-typography-118956836.jpg" (click)="MoveToViewPage('Son')" alt="Birthday" />
-<img src="https://cdn10.bigcommerce.com/s-7fcgcq/products/4455/images/1306/3235-Wife__85427.1444427248.1280.1280.JPG?c=2" (click)="MoveToViewPage('Wife')" alt="Wedding" />
-<img src="https://static.vecteezy.com/system/resources/previews/000/370/036/non_2x/floral-summer-text-mom-vector-illustration-hand-drawn-capital-uppercase-with-flowers-and-leaves-and-white-calligraphy-letters-on-red-background-for-mother-s-day.jpg" (click)="MoveToViewPage('Mother')" alt="Wedding" />
-<img src="https://cdn1.vectorstock.com/i/1000x1000/86/75/friend-word-text-with-handwritten-rainbow-vibrant-vector-23928675.jpg" (click)="MoveToViewPage('Friends')" alt="friend" />
-<img src="https://i.pinimg.com/236x/60/e0/6f/60e06f90964e3545db28e8e9f69df784--sisters-images-the-words.jpg" (click)="MoveToViewPage('Sister')" alt="sister" />
+    <img src="https://crafterscupboard.com.au/image/cache/catalog/Stock/A2Z%20Scraplets/Husband%20Script%20Word-228x228.jpg" (click)="navigateToViewPageRecipient('Husband')" alt="Birthday" />
+<img src="https://cdn11.bigcommerce.com/s-m28of/images/stencil/500x659/products/1083/3969/weldedwordfather-bold__40494.1577479135.png?c=2" (click)="navigateToViewPageRecipient('Father')" alt="Birthday" />
+<img src="https://cdn.scrapbook.com/products/cache/SBC_unp-8013_0.jpg" (click)="navigateToViewPageRecipient('Brother')" alt="brother" />
+<img src="https://thumbs.dreamstime.com/b/son-hand-written-word-text-typography-design-can-be-used-logo-branding-card-son-hand-written-word-text-typography-118956836.jpg" (click)="navigateToViewPageRecipient('Son')" alt="Birthday" />
+<img src="https://cdn10.bigcommerce.com/s-7fcgcq/products/4455/images/1306/3235-Wife__85427.1444427248.1280.1280.JPG?c=2" (click)="navigateToViewPageRecipient('Wife')" alt="Wedding" />
+<img src="https://static.vecteezy.com/system/resources/previews/000/370/036/non_2x/floral-summer-text-mom-vector-illustration-hand-drawn-capital-uppercase-with-flowers-and-leaves-and-white-calligraphy-letters-on-red-background-for-mother-s-day.jpg" (click)="navigateToViewPageRecipient('Mother')" alt="Wedding" />
+<img src="https://cdn1.vectorstock.com/i/1000x1000/86/75/friend-word-text-with-handwritten-rainbow-vibrant-vector-23928675.jpg" (click)="navigateToViewPageRecipient('Friends')" alt="friend" />
+<img src="https://i.pinimg.com/236x/60/e0/6f/60e06f90964e3545db28e8e9f69df784--sisters-images-the-words.jpg" (click)="navigateToViewPageRecipient('Sister')" alt="sister" />
 </div>
 </div>
 </div>
@@ -189,19 +189,19 @@ choose and order the best possible gifts for their beloved ones. -->
   </div>
 
   <section class="products">
-    <div class="product" *ngFor="let product of trending">
-      <img [src]="product.image" [alt]="product.name">
-      <h2>{{ product.name }}</h2>
-      <p>Rs.{{ product.price }}</p>
+    <div class="product" *ngFor="let product of trendingItems">
+      <img [src]="product.giftImageUrl" [alt]="product.giftName">
+      <h2>{{ product.giftName }}</h2>
+      <p>Rs.{{ product.giftPrice }}</p>
       <div>
         <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
         <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
       </div>
-      <ng-container *ngIf="product.stock < 10">
-        <p><span [style.color]="product.stock < 10 ? 'red' : 'inherit'">{{ product.stock }}</span>  Piece left, Order soon!</p>
+      <ng-container *ngIf="product.giftQuantity < 10">
+        <p><span [style.color]="product.giftQuantity < 10 ? 'red' : 'inherit'">{{ product.giftQuantity }}</span>  Piece left, Order soon!</p>
       </ng-container>
       <br>
-      <button (click)="addToCart(product['id'])">Add to Cart</button> 
+      <button (click)="addToCart(product['giftId'])">Add to Cart</button> 
     </div>
   </section>
 </div>
@@ -218,20 +218,20 @@ choose and order the best possible gifts for their beloved ones. -->
   </div>
 
   <section class="products">
-    <div class="product" *ngFor="let product of occasionProducts" [ngClass]="{'low-stock': product.stock < 10}">
-      <img [src]="product.image" [alt]="product.name">
-      <h2>{{ product.name }}</h2>
-      <h2> <span [style.textDecoration]="'line-through'">Rs.{{ product.price }}</span></h2>
-      <p><span [style.color]="'red'">Rs.{{ product.revisedRate }}</span> ({{ getDiscountPercentage(product.price, product.revisedRate) }}% discount)</p>
+    <div class="product" *ngFor="let product of fathersDayProducts" [ngClass]="{'low-stock': product.giftQuantity < 10}">
+      <img [src]="product.giftImageUrl" [alt]="product.giftName">
+      <h2>{{ product.giftName }}</h2>
+      <h2> <span [style.textDecoration]="'line-through'">Rs.{{ product.giftPrice }}</span></h2>
+      <p><span [style.color]="'red'">Rs.{{ product.discountPrice }}</span> ({{ getDiscountPercentage(product.giftPrice, product.discountPrice)}}% discount)</p>
       <div>
         <span class="star-rating" *ngFor="let star of getFilledStars(product.rating)">&#9733;</span>
         <span class="empty-star" *ngFor="let star of getEmptyStars(product.rating)">&#9733;</span>
       </div>
       <br>
-      <ng-container *ngIf="product.stock < 10">
-        <p><span [style.color]="product.stock < 10 ? 'red' : 'inherit'">{{ product.stock }}</span>  Piece left, Order soon!</p>
+      <ng-container *ngIf="product.giftQuantity < 10">
+        <p><span [style.color]="product.giftQuantity < 10 ? 'red' : 'inherit'">{{ product.giftQuantity }}</span>  Piece left, Order soon!</p>
       </ng-container>
-      <button (click)="addToCart(product['id'])">Add to Cart</button> 
+      <button (click)="addToCart(product['giftId'])">Add to Cart</button> 
     </div>
   </section>
 </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from 'src/app/products.service';
-import { Product } from 'src/app/Product';
+import { HttpClient } from '@angular/common/http';
+//import { DatePipe } from '@angular/common';
+import { OrderModel } from 'src/app/order-model';
 
 @Component({
   selector: 'app-customerorder',
@@ -10,18 +11,21 @@ import { Product } from 'src/app/Product';
   styleUrls: ['./customerorder.component.css']
 })
 export class CustomerorderComponent implements OnInit {
+  listdata:OrderModel[]
   orderForm!: FormGroup;
-  selectedProduct: Product | undefined;
+  selectedProduct: any;
   isDetailsVisible = false;
   productId: any;
-  errorMessage: string | undefined;
-  image: string | undefined;
+  errorMessage: string ='';
+  image: string ='';
+  order:OrderModel=new OrderModel();
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private productService: ProductsService
+    private http: HttpClient,
+    //private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -39,55 +43,61 @@ export class CustomerorderComponent implements OnInit {
   }
 
   getProductById(productId: number) {
-    this.productService.getProductById(productId).subscribe(
-      (product: Product | undefined) => {
-        if (product) {
-          this.selectedProduct = product;
-          this.productService.getItemFromCart(productId).subscribe(cartItem => {
-            if (cartItem && cartItem.orderDetails) {
-              this.orderForm.setValue(cartItem.orderDetails);
-            }
+    // Implement the logic to fetch the product details using HTTP GET request
+    this.http.get<any>('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/admin/getProductDetails/' + productId)
+      .subscribe(
+        (response: any) => {
+          this.selectedProduct = response;
+          // Set the form values with the received data
+          this.orderForm.patchValue({
+          orderPrice: response.price,
+          orderDescription: "A Memorable gift you can give your loved ones!",
+          selectGiftModel: response.name,
           });
-        } else {
-          console.log('Product not found');
+        }, 
+        (error: any) => {
+          console.log('Error retrieving product:', error);
         }
-      },
-      (error: any) => {
-        console.log('Error retrieving product:', error);
-      }
-    );
+      );
   }
 
   initializeForm() {
-    this.orderForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      enterDate: ['', Validators.required],
-      enterAddress: ['', Validators.required],
-      enterPhoneNo: ['', Validators.required],
-      enterEmail: ['', [Validators.required, Validators.email]],
-      orderPrice: ['', Validators.required],
-      giftModel: ['', Validators.required],
-      orderDescription: ['', Validators.required],
-      selectThemeModel: ['', Validators.required],
-      productQuantity: [1, Validators.required],
-    });
-  }
+  this.orderForm = this.formBuilder.group({
+    orderName: ['', Validators.required],
+    orderDate: ['', Validators.required],
+    orderAddress: ['', Validators.required],
+    orderPhone: ['', Validators.required],
+    orderEmail: ['', [Validators.required, Validators.email]],
+    orderPrice: ['', Validators.required],
+    selectGiftModel: ['', Validators.required],
+    orderDescription: ['', Validators.required],
+    selectThemeModel: ['', Validators.required],
+  });
+}
+
+  
 
   placeOrder() {
+    /*const formattedDate = this.datePipe.transform(this.orderForm.get('orderDate')?.value, 'yyyy-MM-dd');
+    this.orderForm.patchValue({ orderDate: formattedDate });*/
     if (this.orderForm.valid) {
-      // You can perform the necessary actions to place the order here
-      if (this.selectedProduct) {
-        this.productService.addToCart(this.selectedProduct, this.orderForm.value).subscribe();
-      }
-      // For demonstration purposes, we will navigate to the payment page
-      this.router.navigate(['/cart']);
-    } else {
-      // Mark all form fields as touched to display validation errors
-      this.orderForm.markAllAsTouched();
-    }
+      // Submit the form data only if the form is valid
+      this.http.post('https://8080-afebfaaebebecfdadebbecffccbcffabaefd.project.examly.io/user/order/AddOrder',this.orderForm.value)
+        .subscribe(
+          (response: any) => {
+            console.log('Order placed successfully');
+            // Handle the success case
+            this.router.navigate(['/cart']);
+          },
+          (error: any) => {
+            console.log('Error placing order:', error);
+            // Handle the error case
+            this.errorMessage = 'Error placing order. Please try again later.';
+          }
+        );
+    } 
   }
-
-  get nameControl() {
-    return this.orderForm.get('name');
+  
+  
+  
   }
-}

@@ -1,13 +1,13 @@
 <router-outlet></router-outlet>
 <div class="head">
     <nav class="navbar navbar-dark">
-        <a class="navbar-brand fa fa-camera" href="#" id="admin"><strong>Photoshop</strong></a>
-        <a class="navbar-brand fa fa-home" href="../admin">Home</a>
-        <a class="navbar-brand fa fa-gift" href="../addgifts" id="adminGifts">Gifts</a>
-        <a class="navbar-brand fa fa-search" href="../theme" id="adminThemes">Themes</a>
-        <a class="navbar-brand fa fa-comments" href="../admin-review">Customers Feedback</a>
-        <a class="navbar-brand fa fa-shopping-cart" href="../order" id="adminOrders">Orders</a>
-        <a class="navbar-brand" href="../admin">Logout</a>
+        <a class="navbar-brand fa fa-camera" [routerLink]="['/admin']" id="admin"><b>Photoshop</b></a>
+        <a class="navbar-brand fa fa-home" [routerLink]="['/admin']">Home</a>
+        <a class="navbar-brand fa fa-gift" [routerLink]="['/addgifts']" id="adminGifts">Gifts</a>
+        <a class="navbar-brand fa fa-search" [routerLink]="['/theme']" id="adminThemes">Themes</a>
+        <a class="navbar-brand fa fa-comments" [routerLink]="['/admin-review']">Customers Feedback</a>
+        <a class="navbar-brand fa fa-shopping-cart" [routerLink]="['/order']" id="adminOrders">Orders</a>
+        <a class="navbar-brand" href="#" (click)="logout()">Logout</a>
   </nav>
 </div>
 <div id="body">
@@ -22,24 +22,24 @@
 <br>
 <div>
 <table id="order1">
-<thead>
-    <th id="orderid">Order Id</th>
-    <th id="userid">User id</th>
-    <th id="giftname">Gift Name</th>
-    <th id="giftprice">Gift Price</th>
-    <th id="giftpaid">Amount Paid<br>(Gifts & Themes)</th>
-    <th id="giftquantity">Quantity</th>
-</thead>
-<tbody>
-    <tr *ngFor="let gift of gifts ; let i =index ">
-        <td id = "user{{i+1}}">{{gift.orderId}}</td>
-        <td>User{{i+1}}</td>
-        <td>{{gift.giftName}}</td>
-        <td>{{gift.giftPrice}}</td>
-        <td>{{gift.giftPaid}}</td>
-        <td>{{gift.giftQuantity}}</td>
-    </tr>
-</tbody>
+    <thead>
+        <th id="orderid">Order Id</th>
+        <th id="userid">User id</th>
+        <th id="giftname">Gift Name</th>
+        <th id="giftprice">Gift Price</th>
+        <!-- <th id="giftpaid">Amount Paid<br>(Gifts & Themes)</th> -->
+        <th id="giftquantity">Quantity</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let gift of gifts ; let i =index ">
+            <td id = "user{{i+1}}">{{gift.orderId}}</td>
+            <td>User{{i+1}}</td>
+            <td>{{gift.orderName}}</td>
+            <td>{{gift.orderPrice}}</td>
+            <!-- <td>{{gift.giftPaid}}</td>  -->
+            <td>{{1}}</td>
+        </tr>
+    </tbody>
 </table>
 </div>
 </div>
