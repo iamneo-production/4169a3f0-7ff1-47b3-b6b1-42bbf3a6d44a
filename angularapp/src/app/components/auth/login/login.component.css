@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-.dropdown {
+/* .dropdown {
     position: absolute;
     top: 30px;
     right: 30px;
@@ -36,7 +36,7 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
-  }
+  } */
 *{
     margin:0;
     padding: 0;;
@@ -148,6 +148,13 @@ button{
 }
 .register p a:hover{
     text-decoration: underline;
+}
+
+#result{
+    color: red;
+    font-weight: 600;
+    position: relative;
+    top: 25px;
 }
 
 
